@@ -1,5 +1,5 @@
-
-<!-- <nav class="navbar  navbar-expand-lg navbar-light bg-light row fixed-top nav-text" >
+<!-- 
+<nav class="navbar  navbar-expand-lg navbar-light bg-light row fixed-top nav-text" style="font-size: 16px;">
     <a class="navbar-brand" href="#"><img src="../../assets/img/logo.png" style="height: 100%;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,10 @@
       </ul>
     </div>
  </nav> -->
- <div style="height: 90vh; width: auto;">
+ <div style="height: 100vh; width: auto; margin-top: 0px;">
   <mat-toolbar class="navbar-fixed-top">
     <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <button style="margin-right: 25px;" mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
       <span><img src="../../assets/img/logo.png" style="width: 220px; height: 60px;"></span>
@@ -48,11 +48,11 @@
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav style="width: 300px;" #sidenav>
+    <mat-sidenav style="width: 300px;" #sidenav style="padding-top:90px">
       <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="#" mat-button><mat-icon>close</mat-icon></a>
         
-        <a (click)="sidenav.toggle() " href="" mat-list-item>Close</a>
-        <a routerLink="" mat-list-item (click)="sidenav.toggle()">{{name}}</a>
+        <a routerLink="" mat-list-item (click)="sidenav.toggle()">Home</a>
         <a routerLink="/services" mat-list-item (click)="sidenav.toggle()">Services</a>
         <a routerLink="/aboutus" mat-list-item (click)="sidenav.toggle()">About Us</a>
         <a routerLink="/contactus" mat-list-item (click)="sidenav.toggle()">Contact Us</a>
@@ -61,7 +61,11 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
-      <img src="../../assets/img/frontimage.jpeg" style="width: 100%; height: 80vh; margin-top: 60px;">
+      <img src="../../assets/img/frontimage.jpeg" class="image">
+      <div class="centered">
+        <span style="font-size: 100px;">EasyFix</span>
+        <p style="font-size: 50px;">Search, Click & Fix</p>
+    </div>
     </mat-sidenav-content> 
   </mat-sidenav-container>
   
