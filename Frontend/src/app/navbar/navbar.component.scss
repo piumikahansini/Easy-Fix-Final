@@ -1,40 +1,55 @@
-// .text {
-//     font-weight:bold; 
-//     font-family:  'Quicksand', sans-serif;
-    
-// }
-
-// .navbar {
-//     justify-content: space-between;
-// }
-
-// span {
-//     padding-right: 1rem;
-// }
-.sidenav{color: #000;}
 .menu-spacer {
-  flex: 1 1 auto;
-}
-
-.centered {
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 1000;
-}
-.image{
-  padding-top: 0px;
-  height: 90vh;
-  margin-top: 60px;   
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
-  padding-bottom: 0px;
-
-
-}
+    flex: 1 1 auto;
+  }
+  
+  .centered {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 1000;
+  }
+  .image{
+    padding-top: 0px;   
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    padding-bottom: 0px;
+  
+  
+  }
+  
+  .parallax {
+    /* The image used */
+    
+  
+    /* Set a specific height */
+    min-height: 600px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  
+  
+  
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }

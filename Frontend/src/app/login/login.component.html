@@ -1,1 +1,19 @@
-<p style="margin-top: 100px;">login us works</p>
+<form class="modal-content animate"  (ngSubmit)="submit(form.value.uname,form.value.psw)" #form="ngForm" style="width: 500px;">
+    <!-- Material input -->
+        <div style="margin-bottom: 50px; text-align: center;"><h3>Loging Form</h3></div>
+                    <div style="height: 100px;">
+                        <mat-icon style="font-size:100px;fill:blue;">account_circle</mat-icon>
+                    </div>
+                
+            
+                <div class="form-inline md-form form-sm mt-0">
+                        <mat-icon>account_circle</mat-icon>
+                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Username" aria-label="Username">
+                </div>
+
+                <div class="form-inline md-form form-sm mt-0">
+                        <mat-icon>lock</mat-icon>
+                        <input class="form-control form-control-sm ml-3 w-75" type="password" placeholder="Password" aria-label="Password">
+                </div>
+                <button type="button" class="btn btn-primary container">Primary</button>
+  </form>

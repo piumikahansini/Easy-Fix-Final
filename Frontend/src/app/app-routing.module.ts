@@ -7,8 +7,6 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 
-
-
 const routes: Routes = [
   {path: '',component: HomeComponent},
   {path: 'aboutus',component: AboutUsComponent},
@@ -16,9 +14,6 @@ const routes: Routes = [
   {path: 'contactus',component: ContactUsComponent},
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent}
-  
-
-
 ];
 
 @NgModule({
