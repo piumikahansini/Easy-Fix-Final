@@ -1,13 +1,17 @@
 <form class="modal-content animate"  (ngSubmit)="submit(form.value.uname,form.value.psw)" #form="ngForm" style="width: 500px;">
     <!-- Material input -->
-        
+    <div align="right" class="close_button">
+    <a Onclick="id01.style.display='none'"><mat-icon >close</mat-icon></a>
+    </div>
     <div style="margin-bottom: 10px; text-align: center;"><h2>Welcome Back !!</h2></div>
+                    
                     <div>
                         <img src="../../assets/img/login.jpg" style=" margin-left: auto; margin-right: auto; width: auto; height: 200px; display: block;">
                     </div>
                     
+                    
                     <div class="row" style=" margin-left: auto; margin-right: auto; width: 50%; display: block;">
-                        <div>
+                        <div style="width: 500px;">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Username</mat-label>
                                 <input matInput placeholder="Email or Phone Number">

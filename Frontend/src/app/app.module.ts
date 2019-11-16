@@ -12,6 +12,10 @@ import {MatListModule} from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +27,8 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +40,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     RegisterComponent,
     ServicesComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    HomeNotFoundComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     MatListModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MDBBootstrapModule.forRoot(),
+    MatCardModule,
+    MatGridListModule
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
