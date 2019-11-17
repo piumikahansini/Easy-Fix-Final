@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,10 +33,14 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
 import { CustomerRootComponent } from './customer/customer-root/customer-root.component';
 import { SampleComponent } from './customer/sample/sample.component';
+import { UserSignupComponent } from './register/user-signup/user-signup.component';
+import { MechanicSignupComponent } from './register/mechanic-signup/mechanic-signup.component';
+
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+
 
 
 
@@ -54,6 +59,8 @@ import { environment } from 'src/environments/environment';
     HomeNotFoundComponent,
     CustomerRootComponent,
     SampleComponent,
+    UserSignupComponent,
+    MechanicSignupComponent,
     
    
   ],
@@ -76,7 +83,8 @@ import { environment } from 'src/environments/environment';
     MatCardModule,
     MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MatSelectModule
     
 
     

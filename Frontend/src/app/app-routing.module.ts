@@ -6,8 +6,9 @@ import {ServicesComponent} from './services/services.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 // import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import{HomeNotFoundComponent} from './home-not-found/home-not-found.component'
-import { CustomerRootComponent } from './customer/customer-root/customer-root.component';
+import {HomeNotFoundComponent} from './home-not-found/home-not-found.component'
+import {CustomerRootComponent } from './customer/customer-root/customer-root.component';
+import {MechanicSignupComponent} from './register/mechanic-signup/mechanic-signup.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/home',pathMatch:'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'contactus',component: ContactUsComponent},
   {path: 'register',component: RegisterComponent},
   {path: 'customerroot',component: CustomerRootComponent},
+  {path: 'mechanicSignup',component: MechanicSignupComponent},
   
   
   {path: '**',component: HomeNotFoundComponent},
