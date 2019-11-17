@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatIconModule} from '@angular/material/icon';
@@ -28,6 +30,14 @@ import { ServicesComponent } from './services/services.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
+import { CustomerRootComponent } from './customer/customer-root/customer-root.component';
+import { SampleComponent } from './customer/sample/sample.component';
+// firebase modules
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { environment } from 'src/environments/environment';
+
+
 
 
 @NgModule({
@@ -42,9 +52,13 @@ import { HomeNotFoundComponent } from './home-not-found/home-not-found.component
     AboutUsComponent,
     ContactUsComponent,
     HomeNotFoundComponent,
+    CustomerRootComponent,
+    SampleComponent,
+    
    
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -60,7 +74,10 @@ import { HomeNotFoundComponent } from './home-not-found/home-not-found.component
     MatInputModule,
     MDBBootstrapModule.forRoot(),
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
+    
 
     
   ],

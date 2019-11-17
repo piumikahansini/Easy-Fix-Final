@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false , 
+  firebase:{
+    apiKey: "AIzaSyBSAOkOKC0TvYyIoqJEKTy7zq6NlrzxtiA",
+    authDomain: "easy-fix-c79b1.firebaseapp.com",
+    databaseURL: "https://easy-fix-c79b1.firebaseio.com",
+    projectId: "easy-fix-c79b1",
+    storageBucket: "easy-fix-c79b1.appspot.com",
+    messagingSenderId: "366982971278",
+    appId: "1:366982971278:web:7645ff434fa8c4cb262edf",
+    measurementId: "G-KKFFFNK6GE"
+
+  }
+  // Initialize Cloud Firestore through Firebase
 };
 
 /*

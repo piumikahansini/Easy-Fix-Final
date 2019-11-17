@@ -1,4 +1,5 @@
-<form class="modal-content animate"  (ngSubmit)="submit(form.value.uname,form.value.psw)" #form="ngForm" style="width: 500px;">
+<form class="modal-content animate"  (ngSubmit)="Login(form.value)" #form="ngForm" style="width: 500px;">
+    
     <!-- Material input -->
     <div align="right" class="close_button">
     <a Onclick="id01.style.display='none'"><mat-icon >close</mat-icon></a>
@@ -14,7 +15,7 @@
                         <div style="width: 500px;">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Username</mat-label>
-                                <input matInput placeholder="Email or Phone Number">
+                                <input matInput placeholder="Email or Phone Number" name="username" ngModel>
                                     <mat-icon matSuffix>account_circle</mat-icon>
                             </mat-form-field>
                         </div>    
@@ -22,7 +23,7 @@
                                   
                         <div>
                             <mat-form-field>
-                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="psw" ngModel>
                                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>

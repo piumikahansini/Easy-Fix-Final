@@ -63,6 +63,18 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  mat-card{
-    padding: 0px 20px 0px 20px;
+  .caption {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .text-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  shadow {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
   }
