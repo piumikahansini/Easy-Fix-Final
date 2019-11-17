@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column1 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 675px;
+	margin: 10px;
+}
+
+
+.column1 h2 {
+	text-align: center;
+	color: red;
+}
+
+column1 p{
+	text-align: center;
+}
+
