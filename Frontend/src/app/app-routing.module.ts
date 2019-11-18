@@ -17,8 +17,10 @@ const routes: Routes = [
   {path: 'services',component: ServicesComponent},
   {path: 'contactus',component: ContactUsComponent},
   {path: 'register',component: RegisterComponent},
+  {path: 'register/mechanic',component: MechanicSignupComponent},
   {path: 'customerroot',component: CustomerRootComponent},
-  {path: 'mechanicSignup',component: MechanicSignupComponent},
+  {path: 'register/user',component: MechanicSignupComponent},
+  
   
   
   {path: '**',component: HomeNotFoundComponent},
