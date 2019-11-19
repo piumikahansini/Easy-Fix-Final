@@ -5,19 +5,19 @@ import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule} from '@angular/material/icon';
+import { MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule} from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import { FormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule} from '@angular/material/list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatSelectModule} from '@angular/material';
+import { MatCardModule} from '@angular/material/card';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatSelectModule} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,13 +33,14 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
 import { CustomerRootComponent } from './customer/customer-root/customer-root.component';
 import { SampleComponent } from './customer/sample/sample.component';
-import { UserSignupComponent } from './register/user-signup/user-signup.component';
-import { MechanicSignupComponent } from './register/mechanic-signup/mechanic-signup.component';
 
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AdminRootComponent } from './admin/admin-root/admin-root.component';
 
 
 
@@ -59,8 +60,7 @@ import { environment } from 'src/environments/environment';
     HomeNotFoundComponent,
     CustomerRootComponent,
     SampleComponent,
-    UserSignupComponent,
-    MechanicSignupComponent,
+    AdminRootComponent,
     
    
   ],
@@ -84,7 +84,10 @@ import { environment } from 'src/environments/environment';
     MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    MatSelectModule
+    AngularFirestoreModule,
+    MatSelectModule,
+    HttpClientModule,
+    ReactiveFormsModule
     
 
     

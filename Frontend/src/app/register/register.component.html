@@ -1,63 +1,100 @@
-<!-- <div class="row" style="height: 500px; margin-top: 100px;">
-    <div class="col-sm-6 col-md-6 col-lg-6 shadow p-3 mb-5 bg-white rounded">
-        <img src="../../assets/img/download.jpg" style="width: 100%;"> 
-    </div>
+<div class="row" style="padding: 100px 400px 0px 400px;">
+    <!-- Card -->
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="../../../assets/img/image1.jpg" style="height: 350px;"alt="Card image cap">
+        <div align="center" class="card-body">
+            <h4 class="card-title" style="font-weight: bold;"><a>Sign Up</a></h4>
+            <form #ngForm="ngForm">
+            <div class="row">
+                <div class="col">        
+                    <mat-form-field>
+                        <mat-label style="width: 100%;">Select your User type</mat-label>
+                        <mat-select  ngModel name="usertype">
+                        <mat-option value="Customer"> Customer</mat-option>
+                        <mat-option value="Mechanic">Mechanic</mat-option>
+                        <mat-option value="Service">Service Center</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div *ngIf="ngForm.value.usertype=='Customer'">
+            
+                <div class="form-container" style="padding: 10px 80px 10px 80px;" >
+                        <mat-form-field>
+                            <input matInput placeholder="Full Name" name="name" required ngModel>
+                            <!-- <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error> -->
+                        </mat-form-field>
+                         <mat-form-field>
+                                <input matInput placeholder="Enter your email" name="email" required ngModel>
+                                <!-- <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error> -->
+                         </mat-form-field>         
+                        <div class="row">
+                            <div class="col-sm-3 col-md-6 col-lg-4" style="padding-right: 360px;">
+                                    <mat-form-field>
+                                        <input matInput #input maxlength="10" placeholder="Phone Number" required name="number" ngModel>
+                                            <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                    </mat-form-field>
+                            </div>
+                            <div class="col-sm-3 col-md-6 col-lg-4">
+                                <mat-form-field>
+                                    <input matInput placeholder="NIC" required name="nic" ngModel>
+                                </mat-form-field>
+                            </div>
+                        </div> 
+                        <mat-form-field>
+                                <input type="password" matInput placeholder="Password" name="password" ngModel required>
+                        </mat-form-field> 
+                        <mat-form-field>
+                            <input type="password" matInput placeholder="Confirm Password" name="repassword" ngModel required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Vehicle Type</mat-label>
+                            <mat-select [formControl]="vehicleType" multiple required>
+                              <mat-option *ngFor="let  vehicleType of  vehicleTypeList" [value]=" vehicleType">{{ vehicleType}}</mat-option>
+                            </mat-select>
+                            <!-- <mat-error *ngif="vehicleType.hasError('required')">Pleease choose vehicle type</mat-error> -->
+                          </mat-form-field>
+                            
+                    </div>
+                </div>    
+            <!-- Button -->
+            <hr>
+            <!-- mechanic form -->
 
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        
-    </div>
-</div> -->
-<div class="container-fluid" style="margin-top: 150px;">
-    <h1 style="font-weight: bolder; padding-bottom: 70px;" align="center">Join <span style="color:coral">WITH</span> Us Now<mat-icon>done_all</mat-icon></h1>
-    
-    <div class="row">     
-        <div class="card-group">
-            <!-- Customer signup -->
-            <div class="card mb-4">
-                <div class="view overlay">
-                        <img class="card-img-top" src="../../assets/img/user_signup.jpg" style="height: 300px;" alt="Card image cap">
-                        <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                        </a>
-                </div>              
-                <div class="card-body">
-                    <h4 class="card-title" style="font-weight: bolder;">Sign Up as Customer</h4>
-                        <p class="card-text">Are you looking for a mechanic? Save your time and make your fixing easy. Join with us Now !!!</p>
-                        <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect routerLink="/register/user-signup">SIGN UP</button>
-                
-                </div>
+            <div *ngIf="ngForm.value.usertype=='Mechanic'">
+
+                <h1>Mechanic</h1>
             </div>
-            <!-- Mechanic signup     -->
-            <div class="card mb-4">
-                <div class="view overlay">
-                    <img class="card-img-top" src="../../assets/img/mechanic_signup.jpg" style="height: 300px;" alt="Card image cap">
-                    <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>              
-                <div class="card-body">
-                    <h4 class="card-title" style="font-weight: bolder;">Sign Up as Mechanic</h4>
-                        <p class="card-text">Fix when you want; make as much money as you need. Join with us Now!!</p>
-                        <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect routerLink="/register/mechanic">SIGN UP</button>
-                </div>
+            
+
+            <!-- service center form -->
+
+            <div *ngIf="ngForm.value.usertype=='Service'">
+
+                <h1>Service center</h1>
             </div>
-            <!-- Service center sign up -->
-            <div class="card mb-4">
-                <div class="view overlay">
-                    <img class="card-img-top" src="../../assets/img/service_signup.jpg" style="height: 300px;" alt="Card image cap">
-                    <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title" style="font-weight: bolder;">Sign Up as Service Center</h4>
-                    <p class="card-text">Make money on your schedule. Make your client happy. Join with us Now!!</p>
-                    <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect>SIGN UP</button>
-                </div>
-            </div>
-        </div>        
-    </div>
-</div>
+            
+          <a (click)="Register(ngForm.value,selected)" class="btn btn-primary">submit</a>
+          <a  class="btn btn-primary" style="margin-left:50px ;">Cancel</a>
+          <!-- {{ngForm.value |json}} -->
+        </form>
+        </div>
       
+      </div>
+    
+      <!-- Card -->
+</div>
+
+
+  
+  <!-- <p>You selected: {{selected}}</p> -->
+  <!-- <div > OPtion 1</div> -->
+  <!-- <ng-template #thenBlock>Content to render when condition is true.</ng-template> -->
+  <!-- <div *ngIf="selected=='option2'"> OPtion 2</div>
+  <div *ngIf="selected=='option3'"> OPtion 3</div> -->
+  
+
+
+
   
   

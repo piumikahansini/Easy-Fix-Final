@@ -5,14 +5,14 @@
 export const environment = {
   production: false , 
   firebase:{
-    apiKey: "AIzaSyBSAOkOKC0TvYyIoqJEKTy7zq6NlrzxtiA",
-    authDomain: "easy-fix-c79b1.firebaseapp.com",
-    databaseURL: "https://easy-fix-c79b1.firebaseio.com",
-    projectId: "easy-fix-c79b1",
-    storageBucket: "easy-fix-c79b1.appspot.com",
-    messagingSenderId: "366982971278",
-    appId: "1:366982971278:web:7645ff434fa8c4cb262edf",
-    measurementId: "G-KKFFFNK6GE"
+    apiKey: "AIzaSyDQLub1Cg5CX96QBOKuYlB6lHLZrjl87xQ",
+    authDomain: "easyfix-1569909233579.firebaseapp.com",
+    databaseURL: "https://easyfix-1569909233579.firebaseio.com",
+    projectId: "easyfix-1569909233579",
+    storageBucket: "easyfix-1569909233579.appspot.com",
+    messagingSenderId: "153951599089",
+    appId: "1:153951599089:web:dda4072590350aa683ec50",
+    measurementId: "G-0FSDFKW4GE"
 
   }
   // Initialize Cloud Firestore through Firebase

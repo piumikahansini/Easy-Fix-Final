@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AboutUsComponent} from './about-us/about-us.component';
@@ -8,7 +8,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {RegisterComponent} from './register/register.component';
 import {HomeNotFoundComponent} from './home-not-found/home-not-found.component'
 import {CustomerRootComponent } from './customer/customer-root/customer-root.component';
-import {MechanicSignupComponent} from './register/mechanic-signup/mechanic-signup.component'
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home',pathMatch:'full'},
@@ -16,11 +16,10 @@ const routes: Routes = [
   {path: 'aboutus',component: AboutUsComponent},
   {path: 'services',component: ServicesComponent},
   {path: 'contactus',component: ContactUsComponent},
-  {path: 'register',component: RegisterComponent},
-  {path: 'register/mechanic',component: MechanicSignupComponent},
-  {path: 'customerroot',component: CustomerRootComponent},
-  {path: 'register/user',component: MechanicSignupComponent},
+  {path: 'register',component: RegisterComponent},  
   
+  {path: 'customerroot',component: CustomerRootComponent},
+  // {path: 'mechanicSignup',component: MechanicSignupComponent},
   
   
   {path: '**',component: HomeNotFoundComponent},
