@@ -1,0 +1,10 @@
+.mechanic-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.mechanic-container > * {
+    width: 100%;
+  }
+
+  
