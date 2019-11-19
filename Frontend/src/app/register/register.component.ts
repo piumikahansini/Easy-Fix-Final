@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {FormBuilder,Validator} from '@angular/forms';
 // import {AngularFireDatabase} from 'angularfire2/database';
 // import { AngularFirestore } from "angularfire2/firestore";
 import { Customer } from './Customer';
@@ -13,6 +14,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder) {}
+  error="This field must be entered";
   
   // select vehicle type
   vehicleType = new FormControl();
@@ -34,29 +37,57 @@ export class RegisterComponent implements OnInit {
   //           '';
   // }
 
-  constructor(private router: Router, private firestore: AngularFirestore) {
+ 
 
-    // this.items = db.collection('items').valueChanges();
-  }
-
-  Register(form) {
+  Register(form,V_Types){
     console.log(form);
-    var newUser=new Customer();
-    newUser.email=form.email;
-    newUser.name=form.name;
-    newUser.usertype=form.usertype;
-    newUser.password=form.password;
-    newUser.nic=form.nic;
-    newUser.number=form.number;
+    // var newUser=new Customer();
+    // newUser.email=form.email;
+    // newUser.name=form.name;
+    // newUser.usertype=form.usertype;
+    // newUser.password=form.password;
+    // newUser.nic=form.nic;
+    // newUser.number=form.number;
+    if(form.usertype=="Customer"){
+      this.firestore.collection("users").doc(form.number).set({
 
-    this.firestore.collection("users").doc(form.number).set({
-      email: form.email,
-      name:form.name,
-    usertype:form.usertype,
-    password:form.password,
-    nic:form.nic,
-    number:form.number
-    });
+        email: form.email,
+        "First Name":form.fname,
+        "Last Name":form.lname,
+        usertype:form.usertype,
+        password:form.password,
+        nic:form.nic,
+        number:form.number
+      });
+
+    }else if(form.usertype=="Mechanic"){
+      this.firestore.collection("users").doc(form.number).set({
+        email: form.email,
+        "First Name":form.fname,
+        "Last Name":form.lname,
+        usertype:form.usertype,
+        password:form.password,
+        nic:form.nic,
+        number:form.number,
+        vehicleType:V_Types,
+      });
+
+    }else if(form.usertype=="Service"){
+      this.firestore.collection("users").doc(form.number).set({
+        email: form.email,
+        "First Name":form.fname,
+        "Last Name":form.lname,
+        usertype:form.usertype,
+        password:form.password,
+        nic:form.nic,
+        number:form.number,
+        address:form.address,
+        registerNumber:form.R_number
+      });
+      
+    }
+
+   
 
     // this.db.list('users').push(newUser);
     this.router.navigate(["/"]);
