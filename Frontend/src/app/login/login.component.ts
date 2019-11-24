@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
+  hide = true;
   constructor(private db:AngularFireDatabase) {
     
    }

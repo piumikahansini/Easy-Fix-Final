@@ -2,35 +2,44 @@
     
     <!-- Material input -->
     <div align="right" class="close_button">
-    <a Onclick="id01.style.display='none'"><mat-icon >close</mat-icon></a>
+        <a Onclick="id01.style.display='none'">
+            <mat-icon >close</mat-icon>
+        </a>
     </div>
-    <div style="margin-bottom: 10px; text-align: center;"><h2>Welcome Back !!</h2></div>
+    
+    <div class="heading">
+        <h2>Welcome Back !!</h2>
+    </div>
                     
-                    <div>
-                        <img src="../../assets/img/login.jpg" style=" margin-left: auto; margin-right: auto; width: auto; height: 200px; display: block;">
-                    </div>
+    <div>
+        <img src="../../assets/img/login.jpg">
+    </div>
                     
                     
-                    <div class="row" style=" margin-left: auto; margin-right: auto; width: 50%; display: block;">
-                        <div style="width: 500px;">
-                            <mat-form-field appearance="legacy">
-                                <mat-label>Username</mat-label>
-                                <input matInput placeholder="Email or Phone Number" name="username" ngModel>
-                                    <mat-icon matSuffix>account_circle</mat-icon>
-                            </mat-form-field>
-                        </div>    
+    <div class="row" class="form-container">
+        <div>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+            <input matInput placeholder="Email or Phone Number" name="username" ngModel>
+                <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+        </div>    
 
                                   
-                        <div>
-                            <mat-form-field>
-                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="psw" ngModel>
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
-                            </mat-form-field>
-                        </div>   
-                        <button mat-raised-button color="warn" style="margin-left: auto; margin-right: auto;  margin-bottom:10px;width: 50%; display: block; margin-bottom: 50px;">Login</button> 
-                    </div>
+        <div>
+                <mat-form-field>
+                        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+        </div>                 
+    </div>
+        
+    <div>
+        <button class="login-btn btn-rounded" mat-raised-button color="warn" >Login</button>             
+    </div>
+        
+    <div class="link">Don't have an account? <a href="/register">Register Now !</a></div>
 
-                    <div style="padding-left:100px">Don't have an account? <a href="/register">Register Now !</a></div>
-  </form>
+</form>

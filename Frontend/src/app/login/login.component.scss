@@ -21,16 +21,16 @@
 //   width: 100%;
 // }
 
-button:hover {
-  opacity: 0.8;
-}
+// button:hover {
+//   opacity: 0.8;
+// }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+// /* Extra styles for the cancel button */
+// .cancelbtn {
+//   width: auto;
+//   padding: 10px 18px;
+//   background-color: #f44336;
+// }
 
 /* Center the image and position the close button */
 .imgcontainer {
@@ -118,4 +118,43 @@ span.psw {
 
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+  padding-right: 100px;
+}
 
+.form-container > * {
+  width: 100%;
+}
+ .login-btn{
+  margin-left:auto;
+  margin-right: auto;
+  display: block; 
+  width: 100px;
+  margin-bottom: 20px;
+ }
+h2{
+  font-weight: bold;
+}
+.link{
+  padding-left:100px; 
+  padding-top: 10px; 
+  padding-bottom:50px;
+}
+.mat-form-field{
+  width: 300px;
+}
+
+.heading{
+  margin-bottom: 10px; 
+  text-align: center;
+}
+img{
+  margin-left: auto;
+  margin-right: auto;
+  width: auto; 
+  height: 200px; 
+  display: block;
+}
