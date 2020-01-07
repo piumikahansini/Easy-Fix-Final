@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {  AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+
 class User{
   name:string;
   NIC:string;

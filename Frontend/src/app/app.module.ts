@@ -19,7 +19,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatSelectModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material';
-
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -90,7 +90,8 @@ import { AdminRootComponent } from './admin/admin-root/admin-root.component';
     AngularFirestoreModule,
     MatSelectModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2PageScrollModule
     
 
     
