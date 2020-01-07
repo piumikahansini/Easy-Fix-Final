@@ -18,6 +18,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCardModule} from '@angular/material/card';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatSelectModule} from '@angular/material';
+import {MatSnackBarModule} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,8 @@ import { SampleComponent } from './customer/sample/sample.component';
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import { environment } from 'src/environments/environment';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {environment} from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AdminRootComponent } from './admin/admin-root/admin-root.component';
@@ -65,7 +67,8 @@ import { AdminRootComponent } from './admin/admin-root/admin-root.component';
    
   ],
   imports: [
-    
+    MatSnackBarModule,
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

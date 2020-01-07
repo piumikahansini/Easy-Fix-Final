@@ -8,6 +8,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {RegisterComponent} from './register/register.component';
 import {HomeNotFoundComponent} from './home-not-found/home-not-found.component'
 import {CustomerRootComponent } from './customer/customer-root/customer-root.component';
+import { AdminRootComponent } from './admin/admin-root/admin-root.component';
 
 
 const routes: Routes = [
@@ -17,11 +18,9 @@ const routes: Routes = [
   {path: 'services',component: ServicesComponent},
   {path: 'contactus',component: ContactUsComponent},
   {path: 'register',component: RegisterComponent},  
-  
   {path: 'customerroot',component: CustomerRootComponent},
-  // {path: 'mechanicSignup',component: MechanicSignupComponent},
-  
-  
+  {path:'adminroot',component:AdminRootComponent},
+  // {path: 'mecha,nicSignup',component: MechanicSignupComponent},
   {path: '**',component: HomeNotFoundComponent},
 ];
 
@@ -30,3 +29,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+

@@ -7,6 +7,7 @@ import {FormBuilder,Validator} from '@angular/forms';
 import { Customer } from './Customer';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder) {}
+  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder,public afAuth: AngularFireAuth) {}
   error="This field must be entered";
   
   // select vehicle type
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit {
  
 
   Register(form,V_Types){
-    console.log(form);
+    // console.log(form);
     // var newUser=new Customer();
     // newUser.email=form.email;
     // newUser.name=form.name;
@@ -49,17 +50,23 @@ export class RegisterComponent implements OnInit {
     // newUser.nic=form.nic;
     // newUser.number=form.number;
     if(form.usertype=="Customer"){
-      this.firestore.collection("users").doc(form.number).set({
+      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
+      .then(user=>{
+        // console.log(user.user.uid);
+        this.firestore.collection("users").doc(user.user.uid).set({
+          phoneNumber:form.number,
+          email: form.email,
+          "First Name":form.fname,
+          "Last Name":form.lname,
+          usertype:form.usertype,
+          password:form.password,
+          nic:form.nic,
+          number:form.number
+        }).catch(error=>{
+          console.log(error);
+        })
 
-        email: form.email,
-        "First Name":form.fname,
-        "Last Name":form.lname,
-        usertype:form.usertype,
-        password:form.password,
-        nic:form.nic,
-        number:form.number
       });
-
     }else if(form.usertype=="Mechanic"){
       this.firestore.collection("users").doc(form.number).set({
         email: form.email,
