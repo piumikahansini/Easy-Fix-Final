@@ -20,6 +20,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import { MatSelectModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+//import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,21 +29,19 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ServicesComponent } from './services/services.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+// import { ServicesComponent } from './login/services/services.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
-import { CustomerRootComponent } from './customer/customer-root/customer-root.component';
-import { SampleComponent } from './customer/sample/sample.component';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RegistrationComponent } from './registration/registration.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AdminRootComponent } from './admin/admin-root/admin-root.component';
+
 
 
 
@@ -56,13 +55,11 @@ import { AdminRootComponent } from './admin/admin-root/admin-root.component';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    ServicesComponent,
-    AboutUsComponent,
-    ContactUsComponent,
+    // ServicesComponent,
     HomeNotFoundComponent,
-    CustomerRootComponent,
-    SampleComponent,
-    AdminRootComponent,
+    RegistrationComponent,
+    AppointmentsComponent,
+    DashboardComponent,
     
    
   ],
@@ -91,10 +88,8 @@ import { AdminRootComponent } from './admin/admin-root/admin-root.component';
     MatSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
-    Ng2PageScrollModule
-    
-
-    
+    Ng2PageScrollModule,
+    //CookieService 
   ],
   providers: [],
   bootstrap: [AppComponent]
