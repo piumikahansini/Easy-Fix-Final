@@ -35,6 +35,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegistrationComponent } from './registration/registration.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {UserSignupComponent } from'./register/user-signup/user-signup.component';
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
@@ -60,6 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     AppointmentsComponent,
     DashboardComponent,
+    UserSignupComponent
     
    
   ],

@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component'
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegistrationComponent} from './registration/registration.component';
+import { UserSignupComponent } from './register/user-signup/user-signup.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home',pathMatch:'full'},
   {path: 'home',component: HomeComponent},
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path: 'register',component: RegisterComponent},   
   {path: 'appointments',component: AppointmentsComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'registration',component: RegistrationComponent},
+  {path: 'signup',component: UserSignupComponent},
   {path: '**',component: HomeNotFoundComponent},
   
 ];
