@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {FormBuilder,Validator} from '@angular/forms';
-// import {AngularFireDatabase} from 'angularfire2/database';
-// import { AngularFirestore } from "angularfire2/firestore";
-//import { Customer } from './Customer';
+import {FormBuilder} from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+// import { FirebaseDatabase} from '@angular/fire';
 import { Observable } from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
 
@@ -16,7 +14,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder,public afAuth: AngularFireAuth) { }
+  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder,public afAuth: AngularFireAuth,
+    // private db:FirebaseDatabase
+    ) { }
   error="This field must be entered";
  
   // select vehicle type
@@ -42,55 +42,63 @@ export class RegistrationComponent implements OnInit {
  
 
   Register(form,V_Types){
-    // console.log(form);
-    // var newUser=new Customer();
-    // newUser.email=form.email;
-    // newUser.name=form.name;
-    // newUser.usertype=form.usertype;
-    // newUser.password=form.password;
-    // newUser.nic=form.nic;
-    // newUser.number=form.number;
+    // var storageRef = this.db.
     if(form.usertype=="Customer"){
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
-      .then(user=>{
-        // console.log(user.user.uid);
-        this.firestore.collection("users").doc(user.user.uid).set({
+      .then(data=>{
+        this.firestore.collection("users").doc(data.user.uid).set({
           phoneNumber:form.number,
           email: form.email,
-          "First Name":form.fname,
-          "Last Name":form.lname,
+          FirstName:form.fname,
+          LastName:form.lname,
           usertype:form.usertype,
           password:form.password,
           nic:form.nic,
-          number:form.number
+          number:form.number,
+          
         }).catch(error=>{
           console.log(error);
         })
 
       });
     }else if(form.usertype=="Mechanic"){
-      this.firestore.collection("users").doc(form.number).set({
-        email: form.email,
-        "First Name":form.fname,
-        "Last Name":form.lname,
-        usertype:form.usertype,
-        password:form.password,
-        nic:form.nic,
-        number:form.number,
-        vehicleType:V_Types,
+      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
+      .then(data=>{
+        this.firestore.collection("users").doc(data.user.uid).set({
+          email: form.email,
+          FirstName:form.fname,
+          LastName:form.lname,
+          usertype:form.usertype,
+          password:form.password,
+          nic:form.nic,
+          number:form.number,
+          vehicleType:V_Types,
+          status:false
+        }).catch(error=>{
+          console.log(error);
+        })
+
       });
+      
 
     }else if(form.usertype=="Service"){
-      this.firestore.collection("users").doc(form.number).set({
-        email: form.email,
-        "First Name":form.fname,
-        "Last Name":form.lname,
-        usertype:form.usertype,
-        password:form.password,
-        nic:form.nic,
-        number:form.number,
-        address:form.address,
-        registerNumber:form.R_number
+      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
+      .then(data=>{
+        this.firestore.collection("users").doc(data.user.uid).set({
+          email: form.email,
+          FirstName:form.fname,
+          LastName:form.lname,
+          usertype:form.usertype,
+          password:form.password,
+          nic:form.nic,
+          number:form.number,
+          address:form.address,
+          registerNumber:form.R_number,
+          status:false
+        }).catch(error=>{
+          console.log(error);
+        })
+
       });
       
     }

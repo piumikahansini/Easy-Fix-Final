@@ -9,15 +9,24 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrationComponent} from './registration/registration.component';
 import { UserSignupComponent } from './register/user-signup/user-signup.component';
+import { RegisterRequestsComponent } from './register-requests/register-requests.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '/home',pathMatch:'full'},
   {path: 'home',component: HomeComponent},
   // {path: 'services',component: ServicesComponent},
   {path: 'register',component: RegisterComponent},   
-  {path: 'appointments',component: AppointmentsComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent,children:[
+    {path: '', component: UserProfileComponent},
+    {path: 'registerRequests',component: RegisterRequestsComponent},
+   
+    {path: 'appointments',component: AppointmentsComponent},
+  ]},
   {path: 'registration',component: RegistrationComponent},
   {path: 'signup',component: UserSignupComponent},
+  
   {path: '**',component: HomeNotFoundComponent},
   
 ];
