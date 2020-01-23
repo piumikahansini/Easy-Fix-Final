@@ -1,3 +1,5 @@
+import { ServiceRequestComponent } from './service-request/service-request.component';
+import { CustomerServiceComponent } from './customer-service/customer-service.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -10,6 +12,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home',pathMatch:'full'},
   {path: 'home',component: HomeComponent},
+  {path: 'register',component: RegisterComponent},  
+  { path: 'customerservice', component: CustomerServiceComponent },
+  { path: 'servicerequest/:serviceid', component : ServiceRequestComponent},
+  // {path: 'mecha,nicSignup',component: MechanicSignupComponent},
   // {path: 'services',component: ServicesComponent},
   {path: 'register',component: RegisterComponent},   
   {path: 'appointments',component: AppointmentsComponent},

@@ -1,6 +1,6 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +41,8 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerServiceComponent } from './customer-service/customer-service.component';
+import { ServiceRequestComponent } from './service-request/service-request.component';
 
 
 
@@ -57,10 +59,12 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     // ServicesComponent,
     HomeNotFoundComponent,
+    CustomerServiceComponent,
+    ServiceRequestComponent,
     RegistrationComponent,
     AppointmentsComponent,
     DashboardComponent,
-    
+
    
   ],
   imports: [
@@ -89,7 +93,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
-    //CookieService 
   ],
   providers: [],
   bootstrap: [AppComponent]

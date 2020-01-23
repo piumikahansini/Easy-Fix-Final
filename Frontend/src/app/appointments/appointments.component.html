@@ -1,4 +1,17 @@
 <div style="margin-top: 100px;" >
 
 <h1><p>appointments works!</p></h1>
+
+<div *ngFor="let item of items">   
+    <div class="alert alert-success">
+        <h6>Date : {{item.date}}</h6><br>
+        <h6>Contact : {{item.contact}}</h6><br>
+        <h6>Time : {{item.time}}</h6>
+        <button (click)="update(item)">Accept</button>
+        <button (click)="delete(item)">Reject</button>
+    </div>
 </div>
+</div>
+
+
+

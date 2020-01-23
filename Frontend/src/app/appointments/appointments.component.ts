@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appointments.component.scss']
 })
 export class AppointmentsComponent implements OnInit {
+  items = [];
+  constructor(private db: AngularFirestore) { 
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    this.db.collection('mechanic_requests')
+    .snapshotChanges().subscribe(serverItems => {
+      this.items = [];
+      serverItems.forEach(a => {
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+        this.items.push(item);
+      });
+    });
+  }
+
+  update(item) {
+    this.db.collection('mechanic_requests').doc(item.id).update({
+      confirmed: true,
+    });
+  }
+
+  delete(item) {
+    this.db.collection('mechanic_requests').doc(item.id).delete();
   }
 
 }
