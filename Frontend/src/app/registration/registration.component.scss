@@ -1,0 +1,23 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.form-container > * {
+    width: 100%;
+  }
+.image{
+    background-image: url(../../assets/img/r+background.jpg);
+    width: 1600px;
+  }
+  .text1{
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: text 4s 1;
+    background: transparent;
+    text-transform: uppercase;
+  
+  }

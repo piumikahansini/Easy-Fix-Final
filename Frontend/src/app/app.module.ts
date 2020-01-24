@@ -20,6 +20,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import { MatSelectModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import {MatTableModule} from '@angular/material/table';
 //import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,14 +36,24 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegistrationComponent } from './registration/registration.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {UserSignupComponent } from'./register/user-signup/user-signup.component';
+import { RegisterRequestsComponent } from './register-requests/register-requests.component';
+
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+
 import { CustomerServiceComponent } from './customer-service/customer-service.component';
 import { ServiceRequestComponent } from './service-request/service-request.component';
+
+import { AuthService} from './auth.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TopbarComponent } from './topbar/topbar.component';
+
 
 
 
@@ -64,6 +75,14 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
     RegistrationComponent,
     AppointmentsComponent,
     DashboardComponent,
+
+
+    UserSignupComponent,
+    RegisterRequestsComponent,
+    UserProfileComponent,
+    SidebarComponent,
+    TopbarComponent
+    
 
    
   ],
@@ -93,8 +112,13 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
     HttpClientModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
+
+
+    MatTableModule,
+    //CookieService 
+
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
