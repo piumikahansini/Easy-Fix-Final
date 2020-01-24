@@ -17,7 +17,7 @@ class User{
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  Log;
+  Log="Logging";
   flag=true;
   constructor(private auth:AuthService) {
     // console.log("hello");
@@ -40,6 +40,13 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+    if(this.auth.getCookie("Auth")==''){
+      this.Log="Logging"
+
+    }else{
+      // var data=JSON.parse(this.auth.getCookie("Auth"));
+      // this.Log=data.FirstName;
+    }
   //   "this.db.list('/user').snapshotChanges().pipe(
   //     map(changes =>
   //       changes.map(c =>
@@ -63,7 +70,7 @@ export class NavbarComponent implements OnInit {
     
   }
   signout(){
-    this.auth.Singnout();
-    window.location.reload();
+    // this.auth.Singnout();
+    // window.location.reload();
   }
 }

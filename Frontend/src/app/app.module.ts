@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
+import {NavbarModule} from 'angular-bootstrap-md';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -21,6 +23,7 @@ import { MatSelectModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import {MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
 //import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -78,6 +81,7 @@ import { TopbarComponent } from './topbar/topbar.component';
    
   ],
   imports: [
+    NavbarModule,
     MatSnackBarModule,
     AngularFireAuthModule,
     BrowserModule,
@@ -104,9 +108,11 @@ import { TopbarComponent } from './topbar/topbar.component';
     ReactiveFormsModule,
     Ng2PageScrollModule,
     MatTableModule,
+    MatMenuModule,
+
     //CookieService 
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

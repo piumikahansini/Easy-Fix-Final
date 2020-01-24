@@ -72,8 +72,8 @@
 
     <ul class="nav navbar-nav navbar-right">
       <li><a routerLink="/registration" style="padding-right: 25px;" routerLinkActive="active">Sign Up</a></li>
-      <li *ngIf="flag"><a onclick="id01.style.display='block'" style="width:auto;" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
-      <li *ngIf="!flag" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
+      <li ><a onclick="id01.style.display='block'" style="width:auto;" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
+      <li *ngIf="auth.logingStatus" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
   </ul>
   
   </div>
