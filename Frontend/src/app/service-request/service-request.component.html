@@ -1,0 +1,27 @@
+
+<div class="jumbotron" style="padding-top: 200px;">
+    <div class="container">
+        <form [formGroup]="bookingForm">
+            <div class="form-group">
+              <label for="name">Mechanic_name : </label>
+              <input type="text" formControlName="name" class="form-control" id="name"  value="{{id}}" readonly>
+            </div>
+            <div class="form-group">
+             <label for="contact">Contact-No :</label>
+              <input type="text" formControlName="contact" class="form-control" id="contact" [ngClass]="{ 'is-invalid': contact.touched && contact.invalid}" placeholder="Enter Contact Number">
+            </div>
+            <div *ngIf="!contact.value" class="invalid-feedback">
+              Contact Number is required
+            </div>
+            <div class="form-group">
+                <label for="date">Appointment Date :</label>
+                <input type="date" formControlName="date" class="form-control" id="date" placeholder="select Date">
+            </div>
+            <div class="form-group">
+                <label for="time">Time :</label>
+                <input type="time" formControlName="time" class="form-control" id="time" placeholder="Enter time">
+            </div>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">Save</button>
+          </form>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+
+<div class="jumbotron">
+    <div class="container" style="padding: 50px;width:100%;">
+        <div class="row">
+            <div class="col" *ngFor="let mac of data">
+                <div class="card" width="100%">
+                    <div class="card-body">
+                        <div class="card-title">Machanic Name : <strong>{{mac.mechanic_name}}</strong></div>
+                        <div class="card-title">Location : <strong>{{mac.name}}</strong></div>
+                        <div class="card-title">Specification : <strong>{{mac.specification}}</strong></div>
+                        <a [routerLink]="['/servicerequest', mac.mechanic_name]"><button class="btn btn-primary">Request For a Appoinment</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
