@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -48,6 +49,10 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+
+import { CustomerServiceComponent } from './customer-service/customer-service.component';
+import { ServiceRequestComponent } from './service-request/service-request.component';
+
 import { AuthService} from './auth.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -69,15 +74,20 @@ import { TopbarComponent } from './topbar/topbar.component';
     RegisterComponent,
     // ServicesComponent,
     HomeNotFoundComponent,
+    CustomerServiceComponent,
+    ServiceRequestComponent,
     RegistrationComponent,
     AppointmentsComponent,
     DashboardComponent,
+
+
     UserSignupComponent,
     RegisterRequestsComponent,
     UserProfileComponent,
     SidebarComponent,
     TopbarComponent
     
+
    
   ],
   imports: [
@@ -107,10 +117,13 @@ import { TopbarComponent } from './topbar/topbar.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
+
+
     MatTableModule,
     MatMenuModule,
 
     //CookieService 
+
   ],
   providers: [],
   bootstrap: [AppComponent]
