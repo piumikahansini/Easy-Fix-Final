@@ -17,60 +17,27 @@ class User{
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  Log="Logging";
+  Log="Loging";
   flag=true;
-  constructor(private auth:AuthService) {
-    // console.log("hello");
-    // this.users = db.list('/user');
-    // db.list('/user').snapshotChanges().pipe(
-    //   map(changes =>
-    //     changes.map(c =>
-    //       ({ key: c.payload.key, ...c.payload.val() })
-    //     )
-    //   )
-    // ).subscribe(users => {
-    //   this.users = users;
-    //   console.log(this.users);
-
-    // })
-   
-    
-    
-   }
+  constructor(
+    private auth:AuthService
+    ) { }
 
 
   ngOnInit() {
     if(this.auth.getCookie("Auth")==''){
-      this.Log="Logging"
+      this.Log="Loging"  
 
     }else{
-      // var data=JSON.parse(this.auth.getCookie("Auth"));
-      // this.Log=data.FirstName;
-    }
-  //   "this.db.list('/user').snapshotChanges().pipe(
-  //     map(changes =>
-  //       changes.map(c =>
-  //         ({ key: c.payload.key, ...c.payload.val() })
-  //       )
-  //     )
-  //   )
-  //   .subscribe(users=>{
-  //     this.users=users;
-  //     console.log(this.users);
-  //   }
 
-  //   );
- 
-  if(localStorage.getItem("fname")){
-    this.Log=localStorage.getItem("fname");
-    this.flag=false;
-  }else{
-    this.Log="Login";
-  }
-    
+      var data=JSON.parse(this.auth.getCookie("Auth"));
+      console.log(data)
+      this.Log=data.Firstname;
+    }
   }
   signout(){
-    // this.auth.Singnout();
-    // window.location.reload();
+    this.auth.Singout();
+    this.Log="Loging";
+    window.location.reload();
   }
 }

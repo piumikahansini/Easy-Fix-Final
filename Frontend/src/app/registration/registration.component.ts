@@ -6,6 +6,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 // import { FirebaseDatabase} from '@angular/fire';
 import { Observable } from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireStorage } from 'angularfire2/storage';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-registration',
@@ -14,10 +16,15 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private router: Router, private firestore: AngularFirestore,private Form:FormBuilder,public afAuth: AngularFireAuth,
-    // private db:FirebaseDatabase
+  constructor(private router: Router,
+    private firestore: AngularFirestore,
+    private Form:FormBuilder,
+    public afAuth: AngularFireAuth,
+    private afstorage:AngularFireStorage,
+    public snackBar: MatSnackBar,
     ) { }
   error="This field must be entered";
+  image:File=null;
  
   // select vehicle type
   vehicleType = new FormControl();
@@ -39,47 +46,91 @@ export class RegistrationComponent implements OnInit {
   //           '';
   // }
 
- 
+  fileSelect(event){
+    this.image=event.target.files[0];
+    console.log(this.image.name);
+  }
+  // imageSelect(event){
+  //   this.image=event.target.files[0];
+  //   console.log(this.image.name);
+  // }
 
   Register(form,V_Types){
-    // var storageRef = this.db.
-    if(form.usertype=="Customer"){
-      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
-      .then(data=>{
-        this.firestore.collection("users").doc(data.user.uid).set({
-          phoneNumber:form.number,
-          email: form.email,
-          FirstName:form.fname,
-          LastName:form.lname,
-          usertype:form.usertype,
-          password:form.password,
-          nic:form.nic,
-          number:form.number,
-          
-        }).catch(error=>{
-          console.log(error);
-        })
-
-      });
-    }else if(form.usertype=="Mechanic"){
-      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
-      .then(data=>{
-        this.firestore.collection("users").doc(data.user.uid).set({
-          email: form.email,
-          FirstName:form.fname,
-          LastName:form.lname,
-          usertype:form.usertype,
-          password:form.password,
-          nic:form.nic,
-          number:form.number,
-          vehicleType:V_Types,
-          status:false
-        }).catch(error=>{
-          console.log(error);
-        })
-
-      });
       
+    if(form.usertype=="Customer"){
+      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
+      then(data=>{
+        if(this.image!=null){
+          this.afstorage.ref('images/customer'+this.image.name).put(this.image).then(image=>{
+            this.afstorage.ref('images/customer'+this.image.name).getDownloadURL().subscribe(url=>{
+              this.firestore.collection("users").doc(data.user.uid).set({
+                phoneNumber:form.number,
+                email: form.email,
+                FirstName:form.fname,
+                LastName:form.lname,
+                usertype:form.usertype,
+                nic:form.nic,
+                number:form.number,
+                profileImage:url
+                
+                
+              }).then(data=>{
+                let config = new MatSnackBarConfig();
+                config.duration = true ? 10000 : 0;
+                this.snackBar.open("msgggggggggggggggggg", true ? "Retry" : undefined, config);
+              })
+              .catch(error=>{
+                console.log(error);
+              })
+            })
+
+          }).catch(error=>{
+            console.error(error);
+          })
+        }else{
+
+        }
+      })
+      .catch(error=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 2000 : 0;
+        this.snackBar.open(error, true ? "Retry" : undefined, config);
+      })      
+    }else if(form.usertype=="Mechanic"){
+      this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
+      then(data=>{
+        if(this.image!=null){
+          this.afstorage.ref('images/'+this.image.name).put(this.image).then(image=>{
+            this.afstorage.ref('images/'+this.image.name).getDownloadURL().subscribe(url=>{    
+              this.firestore.collection("users").doc(data.user.uid).set({
+                  email: form.email,
+                  FirstName:form.fname,
+                  LastName:form.lname,
+                  usertype:form.usertype,
+                  nic:form.nic,
+                  number:form.number,
+                  vehicleType:V_Types,
+                  status:false,
+                  profileImage:url
+              }).then(user=>{
+                let config = new MatSnackBarConfig();
+                config.duration = true ? 2000 : 0;
+                this.snackBar.open("msgggggggggggggggggg", true ? "Retry" : undefined, config);
+              })
+              .catch(err=>{
+                console.error(err);
+              })
+            })  
+
+          }).catch(err=>{
+            console.error(err);
+          })
+        }
+      })
+      .catch(error=>{
+        console.error(error);
+        return;
+      })
 
     }else if(form.usertype=="Service"){
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
@@ -98,7 +149,6 @@ export class RegistrationComponent implements OnInit {
         }).catch(error=>{
           console.log(error);
         })
-
       });
       
     }
@@ -106,7 +156,7 @@ export class RegistrationComponent implements OnInit {
    
 
     // this.db.list('users').push(newUser);
-    this.router.navigate(["/"]);
+    // this.router.navigate(["/"]);
 
   }
 

@@ -56,8 +56,8 @@ export class RegisterComponent implements OnInit {
         this.firestore.collection("users").doc(user.user.uid).set({
           phoneNumber:form.number,
           email: form.email,
-          "First Name":form.fname,
-          "Last Name":form.lname,
+          FirstName:form.fname,
+          LastName:form.lname,
           usertype:form.usertype,
           password:form.password,
           nic:form.nic,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavbarModule} from 'angular-bootstrap-md';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +9,12 @@ import {NavbarModule} from 'angular-bootstrap-md';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private auth:AuthService
+    ) { }
 
   ngOnInit() {
+    console.log(this.auth.getCookie("Auth"))
   }
 
 }

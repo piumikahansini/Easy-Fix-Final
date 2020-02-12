@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
   Login(formData){
-    this.authe
     
     if(formData.username == ''){
       let config = new MatSnackBarConfig();
@@ -46,22 +45,22 @@ export class LoginComponent implements OnInit {
 
             
             var temp={
-              Fname:returnData.FirstName,
-              Sname:returnData.LastName,
+              Firstname:returnData.FirstName,
+              Lastname:returnData.LastName,
               usertype:returnData.usertype,
+              image:returnData.image
             }
-            
-            console.log(JSON.stringify(returnData));
+
             this.authe.setCookie("Auth",JSON.stringify(temp),1);
             // this.auth("Auth",JSON.stringify(returnData),1);
             console.log(this.authe.getCookie("Auth"));
             this.router.navigate(['../dashboard']);
-          }else{
-            let config = new MatSnackBarConfig();
-            config.duration = true ? 2000 : 0;
-            this.snackBar.open("Password or Email Incorect..!", true ? "Retry" : undefined, config);
           }
         })
+      }).catch(err=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 2000 : 0;
+        this.snackBar.open("Password or Email Incorect..!", true ? "Retry" : undefined, config);
       })
     }
   }

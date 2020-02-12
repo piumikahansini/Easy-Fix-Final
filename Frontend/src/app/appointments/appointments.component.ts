@@ -1,6 +1,5 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Customer } from "../Customer";
 
 
@@ -37,12 +36,5 @@ export class AppointmentsComponent implements OnInit {
   delete(item) {
     this.db.collection('mechanic_requests').doc(item.id).delete();
   }
-
-export class AppointmentsComponent implements OnInit {
-
-  constructor(private db:AngularFirestore) { }
-
-
-  ngOnInit() { }
 }
 

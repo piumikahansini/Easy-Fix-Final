@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class AuthService {
   logingStatus=false;
   constructor(
     public snackBar: MatSnackBar,
+    private auth:AngularFireAuth
     ) { 
       if(this.getCookie("Auth")==''){
         this.logingStatus=false;
@@ -17,32 +19,40 @@ export class AuthService {
       }else{
         this.logingStatus=true;
       }
-    
-    
   }
   
   
-  setCookie(name:string,value:string,expireDate:number,path:string=''){
+  setCookie(name:string,value:string,expireDate:number,path='/'){
     this.logingStatus=true;
     let nowdate:Date=new Date();
     nowdate.setDate(nowdate.getDate()+expireDate);
-    let expire:string=`[expire]=${nowdate.toString()}`;
-    console.log(nowdate.toString());
-    let   cpath:string=path ? `;path=${path}`:'';
+    let expire:string=`[expire]=${nowdate.toUTCString()}`;
+    console.log(nowdate.toUTCString());
+    let  cpath:string=path ? `;path=${path}`:'';
     document.cookie=`${name}=${value};${expire}${cpath}`;
+    
   }
-  getCookie(name:string){
-    let data:Array<string>=document.cookie.split(';');
-    let caLen:number=data.length;
-    let cookieName=`${name}=`;
-    let c:string;
-    for(let i:number=0;i<caLen;i++){
-      c=data[i].replace(/^\s+/g,'');
-      if(c.indexOf(cookieName)==0){
-        return c.substring(cookieName.length,data.length);
+  getCookie(cname:string){
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
       }
     }
-    return '';9
+  return "";
+
+    
+  }
+  Singout(){
+    this.logingStatus=false;
+    this.setCookie("Auth","",-1);
+    this.auth.auth.signOut();
   }
   // createaaaa(){
     

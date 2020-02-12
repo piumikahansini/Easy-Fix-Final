@@ -25,6 +25,7 @@ import {MatSnackBarModule} from '@angular/material';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 //import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 // import { ServicesComponent } from './login/services/services.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 import { RegistrationComponent } from './registration/registration.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -91,6 +93,8 @@ import { TopbarComponent } from './topbar/topbar.component';
    
   ],
   imports: [
+    MatExpansionModule,
+    AngularFireStorageModule,
     NavbarModule,
     MatSnackBarModule,
     AngularFireAuthModule,
