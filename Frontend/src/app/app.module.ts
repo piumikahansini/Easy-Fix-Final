@@ -26,6 +26,9 @@ import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
+
+import {MatDialogModule} from '@angular/material/dialog';
 //import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +37,6 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 // import { ServicesComponent } from './login/services/services.component';
 import { HomeNotFoundComponent } from './home-not-found/home-not-found.component';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -42,8 +44,8 @@ import { AngularFireStorageModule} from '@angular/fire/storage';
 import { RegistrationComponent } from './registration/registration.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {UserSignupComponent } from'./register/user-signup/user-signup.component';
 import { RegisterRequestsComponent } from './register-requests/register-requests.component';
+import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 
 // firebase modules
 import {AngularFireModule} from 'angularfire2';
@@ -73,7 +75,6 @@ import { TopbarComponent } from './topbar/topbar.component';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent,
     // ServicesComponent,
     HomeNotFoundComponent,
     CustomerServiceComponent,
@@ -81,18 +82,17 @@ import { TopbarComponent } from './topbar/topbar.component';
     RegistrationComponent,
     AppointmentsComponent,
     DashboardComponent,
-
-
-    UserSignupComponent,
     RegisterRequestsComponent,
     UserProfileComponent,
     SidebarComponent,
-    TopbarComponent
+    TopbarComponent,
+    ConfirmationDialogComponent
     
 
    
   ],
   imports: [
+    MatDialogModule,
     MatExpansionModule,
     AngularFireStorageModule,
     NavbarModule,
@@ -121,6 +121,8 @@ import { TopbarComponent } from './topbar/topbar.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
+    MatTabsModule,
+
 
 
     MatTableModule,
@@ -129,7 +131,15 @@ import { TopbarComponent } from './topbar/topbar.component';
     //CookieService 
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    
+  ],
+  bootstrap: [AppComponent],
+  exports:[
+    ConfirmationDialogComponent
+  ],
+  entryComponents:[
+    ConfirmationDialogComponent
+  ]
 })
 export class AppModule { }

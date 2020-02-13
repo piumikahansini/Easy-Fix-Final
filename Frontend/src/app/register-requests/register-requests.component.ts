@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {AuthService} from '../auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatSnackBar, MatSnackBarConfig, MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-register-requests',
@@ -10,40 +13,88 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class RegisterRequestsComponent implements OnInit {
   loggin="Loging";
-  users=[];
+  mechanics=[];
+  serviceCenters=[];
   temp=[];
   panelOpenState = false;
+  user={
+    Firstname:"Piumika",
 
-  constructor(private auth:AuthService,private db:AngularFirestore) { }
+  }
+
+  constructor(
+    private auth:AuthService,private db:AngularFirestore,
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.db.collection('users').snapshotChanges().forEach(data=>{
       
       this.temp=data;
-      this.users=[];
+      this.mechanics=[];
+      this.serviceCenters=[];
       this.temp.forEach(val=>{
-        console.log(val);
+        
         
         var user={
                   id:val.payload.doc.id,
                   data:val.payload.doc.data()
         }
         // console.log(user);
-        // if(user.data.status===false){
-          this.users.push(user);
-        // }
+        if(user.data.status===false){
+          console.log(user);
+          if(user.data.usertype == "Mechanic"){
+            console.log(user);
+            this.mechanics.push(user);
+          }else if(user.data.usertype == "Service"){
+            console.log(user);
+            this.serviceCenters.push(user);
+
+          }
+         
+        }
       })
     });
   }
   approve(id){
     console.log(id);
-    this.users=[];
-    this.db.collection("users").doc(id).update({
-      status:true
-    })
+    //this.users=[];
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+        data: {
+          message: 'Are you sure want to Register?',
+          buttonText: {
+            ok: 'Yes',
+            cancel: 'No'
+          }
+        }
+      });
+      dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.db.collection("users").doc(id).update({
+            state:true
+          })
+        }
+      });
+
+
+
   }
   delete(id){
-    this.db.collection("users").doc(id).delete();
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        message: 'Are you sure want to Register?',
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.db.collection("users").doc(id).delete();
+      }
+    });
+    
   }
 }
 

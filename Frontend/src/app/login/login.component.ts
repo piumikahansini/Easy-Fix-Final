@@ -5,6 +5,7 @@ import { Router} from '@angular/router';
 import { AuthService} from '../auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class LoginComponent implements OnInit {
   hide = true;
+  mystyle = {
+    'display':'block'
+  }
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -23,6 +27,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() { }
+
   Login(formData){
     
     if(formData.username == ''){
@@ -39,7 +44,7 @@ export class LoginComponent implements OnInit {
       
       this.fireauth.auth.signInWithEmailAndPassword(formData.username,formData.psw).then(user=>{
         
-        this.db.collection("users").doc(user.user.uid).get().subscribe(data=> {
+        this.db.collection("users").doc(user.user.uid).get().subscribe(data=>{
           if(data.exists){
             var returnData=data.data();
 
@@ -50,11 +55,14 @@ export class LoginComponent implements OnInit {
               usertype:returnData.usertype,
               image:returnData.image
             }
-
+            this.authe.username=temp.Firstname;
             this.authe.setCookie("Auth",JSON.stringify(temp),1);
-            // this.auth("Auth",JSON.stringify(returnData),1);
-            console.log(this.authe.getCookie("Auth"));
-            this.router.navigate(['../dashboard']);
+            
+            this.mystyle={
+              'display':'none'
+            }
+            location.reload();
+            // this.router.navigate(['./dashboard']);
           }
         })
       }).catch(err=>{

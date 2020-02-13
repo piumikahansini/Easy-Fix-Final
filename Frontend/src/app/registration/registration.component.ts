@@ -25,6 +25,7 @@ export class RegistrationComponent implements OnInit {
     ) { }
   error="This field must be entered";
   image:File=null;
+  NICcopy:File=null;
  
   // select vehicle type
   vehicleType = new FormControl();
@@ -50,6 +51,10 @@ export class RegistrationComponent implements OnInit {
     this.image=event.target.files[0];
     console.log(this.image.name);
   }
+  NICSelect(event){
+    this.NICcopy=event.target.files[0];
+    console.log(this.image.name);
+  }
   // imageSelect(event){
   //   this.image=event.target.files[0];
   //   console.log(this.image.name);
@@ -61,8 +66,8 @@ export class RegistrationComponent implements OnInit {
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
-          this.afstorage.ref('images/customer'+this.image.name).put(this.image).then(image=>{
-            this.afstorage.ref('images/customer'+this.image.name).getDownloadURL().subscribe(url=>{
+          this.afstorage.ref('profilepics/customer/'+this.image.name).put(this.image).then(image=>{
+            this.afstorage.ref('profilepics/customer/'+this.image.name).getDownloadURL().subscribe(url=>{
               this.firestore.collection("users").doc(data.user.uid).set({
                 phoneNumber:form.number,
                 email: form.email,
@@ -75,9 +80,10 @@ export class RegistrationComponent implements OnInit {
                 
                 
               }).then(data=>{
+                this.router.navigate(["/"]);
                 let config = new MatSnackBarConfig();
                 config.duration = true ? 10000 : 0;
-                this.snackBar.open("msgggggggggggggggggg", true ? "Retry" : undefined, config);
+                this.snackBar.open("You have registered successfully.Please login now", true ? "Retry" : undefined, config);
               })
               .catch(error=>{
                 console.log(error);
@@ -100,25 +106,32 @@ export class RegistrationComponent implements OnInit {
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
-          this.afstorage.ref('images/'+this.image.name).put(this.image).then(image=>{
-            this.afstorage.ref('images/'+this.image.name).getDownloadURL().subscribe(url=>{    
-              this.firestore.collection("users").doc(data.user.uid).set({
-                  email: form.email,
-                  FirstName:form.fname,
-                  LastName:form.lname,
-                  usertype:form.usertype,
-                  nic:form.nic,
-                  number:form.number,
-                  vehicleType:V_Types,
-                  status:false,
-                  profileImage:url
-              }).then(user=>{
-                let config = new MatSnackBarConfig();
-                config.duration = true ? 2000 : 0;
-                this.snackBar.open("msgggggggggggggggggg", true ? "Retry" : undefined, config);
-              })
-              .catch(err=>{
-                console.error(err);
+          this.afstorage.ref('profilepics/mechanic/'+this.image.name).put(this.image).then(image=>{
+            this.afstorage.ref('profilepics/mechanic/'+this.image.name).getDownloadURL().subscribe(imgurl=>{    
+              this.afstorage.ref('nic'+this.NICcopy.name).put(this.NICcopy).then(a=>{
+                  this.afstorage.ref('nic'+this.NICcopy).getDownloadURL().subscribe(nicurl=>{
+                    this.firestore.collection("users").doc(data.user.uid).set({
+                      email: form.email,
+                      FirstName:form.fname,
+                      LastName:form.lname,
+                      usertype:form.usertype,
+                      nic:form.nic,
+                      number:form.number,
+                      vehicleType:V_Types,
+                      status:false,
+                      profileImage:imgurl,
+                      NICcopy:nicurl
+                  }).then(user=>{
+                    this.router.navigate(["/"]);
+                    let config = new MatSnackBarConfig();
+                    config.duration = true ? 10000 : 0;
+                    this.snackBar.open("Yor request have been sent. Please wait for a confirmation", true ? "Retry" : undefined, config);
+                  })
+                  .catch(err=>{
+                    console.error(err);
+                  })
+
+                  })
               })
             })  
 

@@ -28,14 +28,14 @@
                             <div class="row">
                                 <div class="col" >
                                     <mat-form-field>
-                                        <input matInput #input maxlength="10" placeholder="Phone Number" required name="number" ngModel>
+                                        <input matInput #input maxlength="10" minlength="10" placeholder="Phone Number" required name="number" ngModel>
                                         <mat-error >{{error}}</mat-error>
                                                     <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col" >
                                     <mat-form-field>
-                                            <input matInput placeholder="NIC" required name="nic" ngModel>
+                                            <input matInput #input maxlength="12" placeholder="NIC" required name="nic" ngModel>
                                             <mat-error >{{error}}</mat-error>
                                     </mat-form-field>
                                 </div>
@@ -59,9 +59,11 @@
                         <!-- customer form -->
                         <div *ngIf="ngForm.value.usertype=='Customer'">
                             <div class="form-container" style="padding: 10px 80px 10px 80px;">
-                                <div class="file-upload-wrapper">
-                                    <mat-label>Upload a Profile Picture</mat-label>
-                                    <input type="file"  (change)="fileSelect($event)" class="file-upload" />
+                                <div class="row">
+                                    <div class="file-upload-wrapper">
+                                        <mat-label>Upload Profile Picture</mat-label>
+                                        <input type="file" id="input-file-now" (change)="fileSelect($event)" class="file-upload" />
+                                    </div>
                                 </div>   
                             </div>
                         </div>
@@ -79,10 +81,17 @@
                                 </mat-form-field>
                             </div>
                             
-                            <div class="file-upload-wrapper">
+                            <div class="file-upload-wrapper" style="padding-left:10px ; padding-top: 20px;">
                                 <mat-label>Upload a Profile Picture</mat-label>
                                 <input type="file" id="input-file-now" (change)="fileSelect($event)" class="file-upload" />
                             </div>
+                            <div class="row" style="padding: 20px 10px 50px 95px;">
+                                <div class="file-upload-wrapper">
+                                    <mat-label>Upload scan copy of your NIC</mat-label>
+                                    <input type="file" id="input-file-now" (change)="NICSelect($event)" class="file-upload" />
+                                </div>
+                            </div>
+
                         </div> 
                     
                         <!-- service center form -->
@@ -98,6 +107,13 @@
                                     <input  matInput placeholder="Registration Number" name="R_number" ngModel required>
                                     <mat-error >{{error}}</mat-error>
                                 </mat-form-field> 
+
+                                <div class="row">
+                                    <div class="file-upload-wrapper">
+                                        <mat-label>Upload scan copy of your Registration Certificate</mat-label>
+                                        <input type="file" id="input-file-now" (change)="fileSelect($event)" class="file-upload" />
+                                    </div>
+                                </div>   
                                         
                                 <mat-form-field>
                                     <mat-label>Vehicle Type you repair</mat-label>

@@ -1,61 +1,13 @@
-<!-- <div style="height: 80VHH; width:auto;">
-    <mat-toolbar class="navbar-fixed-top">
-      <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span><img src="../../assets/img/logo.png" style="width: 220px; height: 60px;"></span>
-        <span class="menu-spacer"></span>
-        <div fxShow="true" fxHide.lt-md>
-           The following menu items will be hidden on both SM and XS screen sizes -->
-          <!-- <a routerLink=""  mat-button>Home</a>
-          <a routerLink="/services"  mat-button>Services</a>
-          <a routerLink="/aboutus"  mat-button>About Us</a>
-          <a routerLink="/contactus"  mat-button>Contact Us</a>
-          <a routerLink="/register"  mat-button>Sign Up</a>
-          <a  mat-button onclick="id01.style.display='block'" style="width:auto;">Login</a>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  
-    <mat-sidenav-container fxFlexFill>
-      <mat-sidenav #sidenav>
-        <mat-nav-list>
-          <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-          <a routerLink="" mat-list-item (click)="sidenav.toggle()">Home</a>
-          <a routerLink="/services" mat-list-item (click)="sidenav.toggle()">Services</a>
-          <a routerLink="/aboutus" mat-list-item (click)="sidenav.toggle()">About Us</a>
-          <a routerLink="/contactus" mat-list-item (click)="sidenav.toggle()">Contact Us</a>
-          <a routerLink="/register" mat-list-item (click)="sidenav.toggle()">Sign Up</a>
-          <a routerLink="/login" mat-list-item (click)="sidenav.toggle()" onclick="id01.style.display='block'" style="width:auto;">Login</a>
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content fxFlexFill>
-        <div class="parallax container-fluid image" style="background-image: url('../../assets/img/frontimage.jpeg')"></div>
-        <div class="centered">
-            <span style="font-size: 100px;">EasyFix</span>
-            <p style="font-size: 50px;">Search, Click & Fix</p>
-        </div>
-    </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
-
-<div id="id01" class="modal"  #id01>
-    <app-login></app-login>
-</div> --> 
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="background-color: white; font-weight:bold">
-  <a class="navbar-brand" href="#"><img src="../../assets/img/logo.png" style="width: 220px; height: 60px;"></a>
+  <a class="navbar-brand" href="/"><img (click)="flagTrue()" src="../../assets/img/logo.png" style="width: 220px; height: 60px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item " routerLink="/" routerLinkActive="active">
-        <a class="nav-link" >Home</a>
-      </li> -->
-      
+    <ul class="navbar-nav mr-auto" *ngIf="flag">
+     
       <li class="nav-item " routerLinkActive="active" >
         <a class="nav-link" pageScroll href="#start" >Home</a>
       </li>
@@ -70,11 +22,19 @@
       </li>
     </ul>
 
+    <ul class="navbar-nav mr-auto" *ngIf="!flag">
+     
+      <li (click)="flagTrue()" class="nav-item " routerLinkActive="active" >
+        <a class="nav-link"  href="/" >Home</a>
+      </li>
+    </ul>
+
     <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="!auth.logingStatus"><a routerLink="/registration" style="padding-right: 25px;" routerLinkActive="active">Sign Up</a></li >
-      <li  *ngIf="auth.logingStatus"><a routerLink="/dashboard" style="padding-right: 25px;" routerLinkActive="active">Profile</a></li>
-      <li ><a onclick="id01.style.display='block'" style="width:auto;"  *ngIf="!auth.logingStatus" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
-      <li *ngIf="auth.logingStatus" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
+      <li *ngIf="auth.logingStatus" (click)="flagFalse()"><a routerLink="/dashboard" style="padding-right: 25px;" routerLinkActive="active">Menu</a></li>
+      <li *ngIf="!auth.logingStatus" (click)="flagFalse()"><a routerLink="/registration" style="padding-right: 25px;" routerLinkActive="active">Sign Up</a></li >
+      <li *ngIf="auth.logingStatus" (click)="flagFalse()"><a routerLink="/dashboard" style="padding-right: 25px;" routerLinkActive="active">Profile</a></li>
+      <li *ngIf="!auth.logingStatus"  ><a Onclick="id01.style.display='block'" style="width:auto;"  ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
+      <li *ngIf="auth.logingStatus" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{auth.username}}</a></li>
   </ul>
   
   </div>

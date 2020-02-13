@@ -9,6 +9,7 @@ export class AuthService {
   
   token;
   logingStatus=false;
+  username;
   constructor(
     public snackBar: MatSnackBar,
     private auth:AngularFireAuth
@@ -18,6 +19,10 @@ export class AuthService {
         
       }else{
         this.logingStatus=true;
+
+        var mycookie=JSON.parse(this.getCookie("Auth"));
+        this.username=mycookie.Firstname;
+        console.log(mycookie)
       }
   }
   
@@ -27,7 +32,7 @@ export class AuthService {
     let nowdate:Date=new Date();
     nowdate.setDate(nowdate.getDate()+expireDate);
     let expire:string=`[expire]=${nowdate.toUTCString()}`;
-    console.log(nowdate.toUTCString());
+    // console.log(nowdate.toUTCString());
     let  cpath:string=path ? `;path=${path}`:'';
     document.cookie=`${name}=${value};${expire}${cpath}`;
     
