@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
   NICcopy:File=null;
  
   // select vehicle type
+  disableSelect = new FormControl(false);
   vehicleType = new FormControl();
   vehicleTypeList: string[] = ['Motor Bike','Three-Wheeler','Car', 'Van','Jeep'];
 
@@ -60,7 +61,10 @@ export class RegistrationComponent implements OnInit {
   //   console.log(this.image.name);
   // }
 
-  Register(form,V_Types){
+  Register(form ,V_Types){
+    
+    
+    
       
     if(form.usertype=="Customer"){
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
@@ -71,8 +75,7 @@ export class RegistrationComponent implements OnInit {
               this.firestore.collection("users").doc(data.user.uid).set({
                 phoneNumber:form.number,
                 email: form.email,
-                FirstName:form.fname,
-                LastName:form.lname,
+                Name:form.name,
                 usertype:form.usertype,
                 nic:form.nic,
                 number:form.number,
@@ -108,19 +111,20 @@ export class RegistrationComponent implements OnInit {
         if(this.image!=null){
           this.afstorage.ref('profilepics/mechanic/'+this.image.name).put(this.image).then(image=>{
             this.afstorage.ref('profilepics/mechanic/'+this.image.name).getDownloadURL().subscribe(imgurl=>{    
-              this.afstorage.ref('nic'+this.NICcopy.name).put(this.NICcopy).then(a=>{
-                  this.afstorage.ref('nic'+this.NICcopy).getDownloadURL().subscribe(nicurl=>{
+              this.afstorage.ref('nic/'+this.NICcopy.name).put(this.NICcopy).then(a=>{
+                  this.afstorage.ref('nic/'+this.NICcopy.name).getDownloadURL().subscribe(nicurl=>{
                     this.firestore.collection("users").doc(data.user.uid).set({
                       email: form.email,
-                      FirstName:form.fname,
-                      LastName:form.lname,
+                      Name:form.name,
                       usertype:form.usertype,
                       nic:form.nic,
                       number:form.number,
+                      hybrid:form.Hybrid,
+                      nonhybrid:form.Non,
                       vehicleType:V_Types,
                       status:false,
                       profileImage:imgurl,
-                      NICcopy:nicurl
+                      NICcopy:nicurl,
                   }).then(user=>{
                     this.router.navigate(["/"]);
                     let config = new MatSnackBarConfig();
@@ -148,28 +152,45 @@ export class RegistrationComponent implements OnInit {
     }else if(form.usertype=="Service"){
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
       .then(data=>{
-        this.firestore.collection("users").doc(data.user.uid).set({
-          email: form.email,
-          FirstName:form.fname,
-          LastName:form.lname,
-          usertype:form.usertype,
-          password:form.password,
-          nic:form.nic,
-          number:form.number,
-          address:form.address,
-          registerNumber:form.R_number,
-          status:false
-        }).catch(error=>{
-          console.log(error);
-        })
-      });
+        if(this.image!=null){
+          this.afstorage.ref('regCertificate/'+this.image.name).put(this.image).then(image=>{
+            this.afstorage.ref('regCertificate/'+this.image.name).getDownloadURL().subscribe(regurl=>{
+              this.firestore.collection("users").doc(data.user.uid).set({
+                email: form.email,
+                Name:form.name,
+                usertype:form.usertype,
+                hybrid:form.Hybrid,
+                nonhybrid:form.Non,
+                number:form.number,
+                address:form.address,
+                registerNumber:form.R_number,
+                vehicleType:V_Types,
+                certificate_img:regurl,  
+                hotline:form.hotline, 
+                status:false
+              }).then(user=>{
+                this.router.navigate(["/"]);
+                let config = new MatSnackBarConfig();
+                config.duration = true ? 10000 : 0;
+                this.snackBar.open("Yor request have been sent. Please wait for a confirmation", true ? "Retry" : undefined, config);
+              })
+            })
+          }
+
+          )
+        }
+      }).catch(error=>{
+        console.error(error);
+        return;
+      }
+      );
       
     }
 
    
 
-    // this.db.list('users').push(newUser);
-    // this.router.navigate(["/"]);
+    
+    
 
   }
 

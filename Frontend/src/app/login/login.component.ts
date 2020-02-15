@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 
             
             var temp={
+              id:user.user.uid,
               Firstname:returnData.FirstName,
               Lastname:returnData.LastName,
               usertype:returnData.usertype,

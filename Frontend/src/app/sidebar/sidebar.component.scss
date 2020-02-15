@@ -22,16 +22,21 @@ body {font-family: "Lato", sans-serif;}
 }
 
 .sidebar a:hover {
-  color: #cb671b;
+  color: rgb(216, 168, 104);
 }
 
-
+a{
+  text-align: center;
+}
 
 .main {
   margin-left: 300px; /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
-
+hr{
+  background-color: rgb(216, 168, 104);
+  width: 75%;
+}
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 12px;}

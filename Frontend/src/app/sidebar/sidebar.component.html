@@ -2,7 +2,14 @@
 
 <div class="sidebar text" >
   <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a [routerLink]="['./registerRequests']" routerLinkActive="router-link-active" ><i class="fa fa-fw fa-wrench"></i> Register Requests</a>
-  <a href="#clients"><i class="fa fa-fw fa-user"></i> Appoinments</a>
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Profile</a>
+  <div><hr></div>
+  <a [routerLink]="['./registerRequests']" routerLinkActive="router-link-active" ><i class="fas fa-user-check"></i> Register Requests</a>
+  <div><hr></div>
+  <a [routerLink]="['./appointments']" routerLinkActive="router-link-active" ><i class="far fa-address-book"></i>Appoinments</a>
+  <div><hr></div>
+  <a [routerLink]="['./viewUsers']" routerLinkActive="router-link-active" ><i class="fas fa-search"></i>Manage Users</a>
+  <div><hr></div>
+  <a [routerLink]="['./profile']" routerLinkActive="router-link-active" ><i class="far fa-user"></i> Profile</a>
+  <div><hr></div>
+  
 </div>

@@ -1,75 +1,80 @@
-<div style="padding-top: 30px; padding-left: 8px; font-weight: 400;">
-  <h3>User Register Requests</h3>
-</div>
-<div style="padding-top:25px ;">
-  <mat-tab-group>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">people</mat-icon>
-        Mechanic
-      </ng-template>
-      <div align=center class="data datarow">
+<div  style="background-color: rgb(247, 245, 231); margin-left: -25px; margin-right: -25px;margin-top: -10px;">
+  <div style="padding-top: 30px; padding-left: 13px; font-weight: 400;">
+    <h3>User Register Requests</h3>
+  </div>
+  <div>
+    <hr class="line">
+  </div>
+  <div>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">people</mat-icon>
+          Mechanic
+        </ng-template>
+        <div align=center class="data datarow">
 
-        <mat-accordion >
-          <mat-expansion-panel *ngFor="let user of mechanics">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-               {{user.data.FirstName}}
-              </mat-panel-title>
-             
-            </mat-expansion-panel-header>
-            <!-- <td>{{user.FirstName}}</td> -->
-        
-            <div style="padding-bottom: 20px;">{{user.data.LastName}}</div>
-            <div>{{user.data.email}}</div>
-            <div>{{nic}}</div>
-            <img src="{{user.data.image}}">
-            <tr>
-              <button (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>
-              <button (click)="delete(user.id)" type="button" class="btn btn-danger">Reject</button>
-            </tr>  
+          <mat-accordion >
+            <mat-expansion-panel *ngFor="let user of mechanics">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                {{user.data.name}} 
+                </mat-panel-title>
+              
+              </mat-expansion-panel-header>       
+              
+              <div>{{user.data.email}}</div>
+              <div>{{user.data.nic}}</div>
+              <div>{{user.data.number}}</div>
+              <!-- <div>{{user.data.v_type}}</div> -->
+              <img src="{{user.data.image}}">
             
-          </mat-expansion-panel>
-          <mat-expansion-panel (opened)="panelOpenState = true"
-                               (closed)="panelOpenState = false">
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-    </mat-tab>
-  
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">build</mat-icon>
-        Service Center
-      </ng-template>
-      <div align=center class="data datarow">
+              <tr>
+                <button  style="margin-right: 20px;" (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>
+                <button (click)="delete(user.id)" type="button" class="btn btn-danger">Reject</button>
+              </tr>  
+              
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </mat-tab>
+    
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">build</mat-icon>
+          Service Center
+        </ng-template>
+        <div align=center class="data datarow">
 
-        <mat-accordion >
-          <mat-expansion-panel *ngFor="let user of serviceCenters">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-               {{user.data.FirstName}}
-              </mat-panel-title>
-             
-            </mat-expansion-panel-header>
-            <!-- <td>{{user.FirstName}}</td> -->
-        
-            <div style="padding-top: 100px;">{{user.data.LastName}}</div>
-            <div style="padding-top: 100px;">{{user.data.email}}</div>
-            <img src="{{user.data.image}}">
-            <div class="row">
-              <button (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>
-              <button (click)="delete(user.id)" type="button" class="btn btn-danger">Reject</button>
-            </div>  
-            <button (click)="approve(user.id)">Submit</button>
-            <button (click)="delete(user.id)">Delete</button>
-          </mat-expansion-panel>
-          <mat-expansion-panel (opened)="panelOpenState = true"
-                               (closed)="panelOpenState = false">
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>  
+          <mat-accordion >
+            <mat-expansion-panel *ngFor="let user of serviceCenters">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                {{user.data.Name}}
+                </mat-panel-title>
+              
+              </mat-expansion-panel-header>
+              <div>{{user.data.email}}</div>
+              <img src="{{user.data.image}}">
+              <div>
+                <button style="margin-right: 20px;" (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>
+                <button (click)="delete(user.id)" type="button" class="btn btn-danger">Reject</button>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div> 
+</div>   
+
+
+
+
 

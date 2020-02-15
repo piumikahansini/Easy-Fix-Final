@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
-import {  AngularFireList } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';  
 import {AuthService} from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -54,8 +51,6 @@ export class NavbarComponent implements OnInit {
     this.auth.logingStatus=false;
     localStorage.removeItem("loc");
     this.route.navigate(['/']);2
-    
 
-    
   }
 }

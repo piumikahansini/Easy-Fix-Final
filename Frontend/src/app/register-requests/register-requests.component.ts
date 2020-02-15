@@ -13,6 +13,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class RegisterRequestsComponent implements OnInit {
   loggin="Loging";
+  
   mechanics=[];
   serviceCenters=[];
   temp=[];
@@ -61,7 +62,7 @@ export class RegisterRequestsComponent implements OnInit {
     //this.users=[];
       const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
         data: {
-          message: 'Are you sure want to Register?',
+          message: 'Are you sure want to Accept the Request?',
           buttonText: {
             ok: 'Yes',
             cancel: 'No'
@@ -82,7 +83,7 @@ export class RegisterRequestsComponent implements OnInit {
   delete(id){
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
-        message: 'Are you sure want to Register?',
+        message: 'Are you sure want to Accept the Requests?',
         buttonText: {
           ok: 'Yes',
           cancel: 'No'

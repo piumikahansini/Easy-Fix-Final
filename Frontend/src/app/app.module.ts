@@ -27,7 +27,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 //import {CookieService} from 'ngx-cookie-service';
 
@@ -61,6 +61,12 @@ import { AuthService} from './auth.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { MenuComponent } from './menu/menu.component';
+import { ViewMechcnicsComponent } from './view-users/view-mechcnics/view-mechcnics.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
+import { ViewCustomerComponent } from './view-users/view-customer/view-customer.component';
+import { ViewServiceCentersComponent } from './view-users/view-service-centers/view-service-centers.component';
+
 
 
 
@@ -86,12 +92,19 @@ import { TopbarComponent } from './topbar/topbar.component';
     UserProfileComponent,
     SidebarComponent,
     TopbarComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MenuComponent,
+    ViewMechcnicsComponent,
+    ViewUsersComponent,
+    ViewCustomerComponent,
+    ViewServiceCentersComponent,
+    
     
 
    
   ],
   imports: [
+    MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
     AngularFireStorageModule,

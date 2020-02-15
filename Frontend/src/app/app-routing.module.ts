@@ -12,23 +12,37 @@ import { RegistrationComponent} from './registration/registration.component';
 import { RegisterRequestsComponent } from './register-requests/register-requests.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MenuComponent } from './menu/menu.component';
+import { ViewMechcnicsComponent} from './view-users/view-mechcnics/view-mechcnics.component';
+import { ViewUsersComponent} from './view-users/view-users.component';
+import { ViewCustomerComponent } from './view-users/view-customer/view-customer.component';
+import { ViewServiceCentersComponent } from './view-users/view-service-centers/view-service-centers.component';
+
+import { from } from 'rxjs';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home',pathMatch:'full'},
-  {path: 'home',component: HomeComponent},
+  { path: '', redirectTo: '/home',pathMatch:'full'},
+  { path: 'home',component: HomeComponent},
   { path: 'customerservice', component: CustomerServiceComponent },
   { path: 'servicerequest/:serviceid', component : ServiceRequestComponent},
   // {path: 'mecha,nicSignup',component: MechanicSignupComponent},
   // {path: 'services',component: ServicesComponent},
   {path: 'dashboard', component: DashboardComponent,children:[
-    {path: '', component: UserProfileComponent},
-    {path: 'registerRequests',component: RegisterRequestsComponent},
-   
-    {path: 'appointments',component: AppointmentsComponent},
+    { path: '', component: UserProfileComponent},
+    { path: 'registerRequests',component: RegisterRequestsComponent},
+    { path: 'profile',component: UserProfileComponent},
+    { path: 'appointments',component: AppointmentsComponent},
+    
+    { path: 'viewUsers', component:ViewUsersComponent,children:[
+      { path: 'viewMechanics', component:ViewMechcnicsComponent},
+      { path: 'viewCustomers', component:ViewCustomerComponent},
+      { path: 'viewServiceCenters', component:ViewServiceCentersComponent}
+    ]},
+    
   ]},
-  {path: 'registration',component: RegistrationComponent},
-  
-  {path: '**',component: HomeNotFoundComponent},
+  { path: 'registration',component: RegistrationComponent},
+  { path: 'menu' ,component: MenuComponent},
+  { path: '**',component: HomeNotFoundComponent},
   
 ];
 
