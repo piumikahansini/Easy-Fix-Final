@@ -1,4 +1,4 @@
-<div  style="background-color: rgb(247, 245, 231); margin-left: -25px; margin-right: -25px;margin-top: -10px;">
+<div style="margin-left: -25px; margin-right: -25px;margin-top: -10px;">
   <div style="padding-top: 30px; padding-left: 13px; font-weight: 400;">
     <h3>User Register Requests</h3>
   </div>
@@ -6,7 +6,7 @@
     <hr class="line">
   </div>
   <div>
-    <mat-tab-group>
+    <mat-tab-group style="padding-left: 20px; padding-right: 20px;">
       <mat-tab>
         <ng-template mat-tab-label>
           <mat-icon class="example-tab-icon">people</mat-icon>
@@ -18,16 +18,20 @@
             <mat-expansion-panel *ngFor="let user of mechanics">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                {{user.data.name}} 
+                {{user.data.Name}} 
                 </mat-panel-title>
               
               </mat-expansion-panel-header>       
-              
-              <div>{{user.data.email}}</div>
-              <div>{{user.data.nic}}</div>
-              <div>{{user.data.number}}</div>
+              <div style="font-weight: 900;">Phone Number: {{user.data.number}}</div>
+              <div>Email: {{user.data.email}}</div>
+              <div>NIC Number: {{user.data.nic}}</div>
+              <div>Phone Number: {{user.data.number}}</div>
+              <div>Types of Vehicles being repaired: {{user.data.vehicleType}}</div>
               <!-- <div>{{user.data.v_type}}</div> -->
-              <img src="{{user.data.image}}">
+              <div class="row"style="margin-bottom: 50px;">
+                <div class="col"><img src="{{user.data.profileImage}}"></div>
+                <div class="col"><img src="{{user.data.NICcopy}}"></div>
+              </div>
             
               <tr>
                 <button  style="margin-right: 20px;" (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>

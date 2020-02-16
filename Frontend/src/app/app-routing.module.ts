@@ -40,6 +40,7 @@ const routes: Routes = [
     ]},
     
   ]},
+
   { path: 'registration',component: RegistrationComponent},
   { path: 'menu' ,component: MenuComponent},
   { path: '**',component: HomeNotFoundComponent},

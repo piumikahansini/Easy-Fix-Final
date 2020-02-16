@@ -67,7 +67,11 @@ import { ViewUsersComponent } from './view-users/view-users.component';
 import { ViewCustomerComponent } from './view-users/view-customer/view-customer.component';
 import { ViewServiceCentersComponent } from './view-users/view-service-centers/view-service-centers.component';
 
+import { AgmCoreModule } from '@agm/core';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+import { IssueReportingComponent } from './issue-reporting/issue-reporting.component';
+import { BlockUserComponent } from './block-user/block-user.component';
 
 
 
@@ -98,12 +102,19 @@ import { ViewServiceCentersComponent } from './view-users/view-service-centers/v
     ViewUsersComponent,
     ViewCustomerComponent,
     ViewServiceCentersComponent,
+    IssueReportingComponent,
+    BlockUserComponent,
+    
     
     
 
    
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCDDr7AeaoDxPniXU1L5Nv4VntQ0lMe1Wc',
+      libraries: ['places']
+    }),
     MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
@@ -135,6 +146,7 @@ import { ViewServiceCentersComponent } from './view-users/view-service-centers/v
     ReactiveFormsModule,
     Ng2PageScrollModule,
     MatTabsModule,
+    GoogleMapsModule,
 
 
 

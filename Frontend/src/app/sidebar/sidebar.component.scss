@@ -37,7 +37,17 @@ hr{
   background-color: rgb(216, 168, 104);
   width: 75%;
 }
+
+.animation{
+  transition: 0.3s;
+  cursor: pointer;
+}
+a:nth-child(odd):hover {
+  transform: perspective(300px) rotateY(30deg);
+  padding-left: 5%;
+}
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 12px;}
 }
+

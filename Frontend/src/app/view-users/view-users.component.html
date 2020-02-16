@@ -1,14 +1,29 @@
 <div  style="margin-left: -25px; margin-right: -25px;">
 
     <div style="padding-top: 30px; padding-left: 20px; font-weight: 400;">
-        <h3>My Profile</h3>
+        <h3>Manage Users</h3>
     </div>
     
     <div>
         <hr  class="line">
-        <mat-tab-group>
-            <mat-tab label="First">  <app-view-mechcnics></app-view-mechcnics> </mat-tab>
-            <mat-tab label="Second"><app-view-customer></app-view-customer></mat-tab>
-            <mat-tab label="Third"> <app-view-service-centers></app-view-service-centers> </mat-tab>
+        <mat-tab-group style="padding-left: 20px; padding-right: 20px;">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon">person</mat-icon>Mechanics
+                </ng-template>
+                <app-view-mechcnics></app-view-mechcnics>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon">emoji_people</mat-icon>Customers
+                </ng-template>
+                <app-view-customer></app-view-customer>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon">build</mat-icon>Service Centers
+                </ng-template>
+                <app-view-service-centers></app-view-service-centers>
+            </mat-tab>
         </mat-tab-group>
 </div>

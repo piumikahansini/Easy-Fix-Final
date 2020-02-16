@@ -4,8 +4,7 @@ import { AngularFirestore } from'@angular/fire/firestore';
 import {MatTableDataSource} from '@angular/material/table';
 export interface PeriodicElement {
   email: string,
-  FirstName:string,
-  LastName:string,
+  Name:string,
   usertype:string,
   nic:string,
   number:string,
@@ -22,7 +21,7 @@ export interface PeriodicElement {
   styleUrls: ['./view-mechcnics.component.scss']
 })
 export class ViewMechcnicsComponent implements OnInit {
-  displayedColumns: string[] = ['email', 'FirstName', 'LastName', 'usertype'];
+  displayedColumns: string[] = ['Name', 'email', 'usertype'];
   dataSource ;
   allData;
   userDetails=[];

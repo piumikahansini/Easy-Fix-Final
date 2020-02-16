@@ -385,6 +385,8 @@ header.masthead .intro-text .intro-heading {
 .service-heading {
   margin: 15px 0;
   text-transform: none;
+  color:orange;
+  
 }
 
 
@@ -438,4 +440,23 @@ section#contact ::-moz-placeholder {
 section#contact :-ms-input-placeholder {
   font-weight: 700;
   color: #ced4da;
+}
+.img{
+  background: linear-gradient(rgb(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))
+  url("../../assets/img/nordwood-themes-EZSm8xRjnX0-unsplash.jpg");
+  width: auto;
+  height: 650px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: -15px;
+  margin-right:-20px;
+}
+
+.icon{
+  color: white;
+}
+
+.detail{
+  color: white;
 }

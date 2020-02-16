@@ -34,7 +34,8 @@ export class NavbarComponent implements OnInit {
 
       var data=JSON.parse(this.auth.getCookie("Auth"));
       console.log(data)
-      this.Log=data.Firstname;
+      this.Log=data.name;
+      console.log(this.Log);
     }
   }
   flagFalse(){
