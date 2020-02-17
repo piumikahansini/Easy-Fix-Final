@@ -29,5 +29,8 @@ export class ViewprofileComponent implements OnInit {
 
       })
   }
+  blockUser(){
+      this.firestore.collection("users").doc(this.id).update({blockStatus:true});
+  }
 
 }

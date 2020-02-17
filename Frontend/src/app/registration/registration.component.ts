@@ -26,22 +26,27 @@ export class RegistrationComponent implements OnInit {
   error="This field must be entered";
   image:File=null;
   NICcopy:File=null;
+  emailerr="";
+  phoneerr="";
+  mainerr="";
  
   // select vehicle type
   disableSelect = new FormControl(false);
   vehicleType = new FormControl();
   vehicleTypeList: string[] = ['Motor Bike','Three-Wheeler','Car', 'Van','Jeep'];
 
-  //vehicle type feild validation
-  email = new FormControl('', [Validators.required, Validators.email]);
+ 
+  
+  
   items: Observable<any[]>;
-  getErrorEmail() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
-  } 
-
+  // getErrorEmail() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //     this.email.hasError('email') ? 'Not a valid email' :
+  //       '';
+  // }
+ 
   fileSelect(event){
+    
     this.image=event.target.files[0];
     console.log(this.image.name);
   }
@@ -49,10 +54,58 @@ export class RegistrationComponent implements OnInit {
     this.NICcopy=event.target.files[0];
     console.log(this.image.name);
   }
+  checkEmail(email:string){
+    if(email==''){
+      this.emailerr="This field must be entered";
+      return;
+    }
+    var at=false;
+    var dot=false;
+    console.log(email);
+    if(email.indexOf('@')!=-1){
+      at=true;
+    }
+    if(email.indexOf('.')!=-1){
+      dot=true;
+    }
+    if(dot && at){
+      this.emailerr="";
+    }else{
+      this.emailerr="Please enter valid email";
+    }
+  }
+  checkPhone(number:string){
+    if(number.length!=10){
+      this.phoneerr="Phone number has 10 digit Please enter valid one";
+      return;
+    }
+    for(var i=0;number.length;i++){
+      if(parseInt(number[i])==NaN){
+        this.phoneerr="Please Enter only number";
+        return;
+      }
+    }
+    this.phoneerr="";
+  }
+  // imageSelect(event){
+  //   this.image=event.target.files[0];
+  //   console.log(this.image.name);
+  // }
 
   Register(form ,V_Types){
+    
+    if((form.usertype=="")||(form.name=="")||(form.email=="")||(form.number=="")||(form.password=="")||(this.emailerr!="")){
+      this.mainerr="You must enter every field";
+      return;
+    }
+    console.log(form);
+    
       
     if(form.usertype=="Customer"){
+      if(!this.image || form.nic==""){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
@@ -91,7 +144,11 @@ export class RegistrationComponent implements OnInit {
         config.duration = true ? 2000 : 0;
         this.snackBar.open(error, true ? "Retry" : undefined, config);
       })      
-    }else if(form.usertype=="Mechanic"){
+    }else if(form.usertype=="Mechanic"  ){
+      if(!this.image || !this.NICcopy ||form.nic=="" ){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
@@ -136,6 +193,10 @@ export class RegistrationComponent implements OnInit {
       })
 
     }else if(form.usertype=="Service"){
+      if(!this.NICcopy ||(form.R_number=="") || (form.hotline=="") || (form.hotline=="") || (form.address=="") ){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
       .then(data=>{
         if(this.image!=null){
