@@ -47,6 +47,12 @@ export class LoginComponent implements OnInit {
         this.db.collection("users").doc(user.user.uid).get().subscribe(data=>{
           if(data.exists){
             var returnData=data.data();
+            if(returnData.blockstatus){
+              let config = new MatSnackBarConfig();
+              config.duration = true ? 20000 : 0;
+              this.snackBar.open("You Don't  Have Permision to logging Please contact admin ", true ? "OK" : undefined, config);
+              return ;
+            }
             if(returnData.usertype == "Service" || returnData.usertype == "Mechanic"){
               if(returnData.status){
                   var temp={

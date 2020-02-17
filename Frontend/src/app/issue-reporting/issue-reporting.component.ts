@@ -32,7 +32,7 @@ export class IssueReportingComponent implements OnInit {
       var user=data.data();
       console.log(user);
       this.contactusForm = new FormGroup({
-        name: new FormControl(user.name),
+        name: new FormControl(user.Name),
         email: new FormControl(user.email),
         phone: new FormControl(user.phone),
         message: new FormControl(user.message),

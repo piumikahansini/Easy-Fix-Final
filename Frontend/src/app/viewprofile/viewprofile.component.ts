@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from'@angular/fire/firestore';
+import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-viewprofile',
@@ -9,7 +10,7 @@ import { AngularFirestore } from'@angular/fire/firestore';
 })
 export class ViewprofileComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private firestore:AngularFirestore) { }
+  constructor(private route:ActivatedRoute,private firestore:AngularFirestore,private snackBar:MatSnackBar) { }
   userDeatil;
   flag=false;
   id;
@@ -24,13 +25,18 @@ export class ViewprofileComponent implements OnInit {
     
 
   }
-  Delete(){
-      this.firestore.collection("users").doc(this.id).delete().then(()=>{
-
+  blockUser(){
+      this.firestore.collection("users").doc(this.id).update({blockstatus:true}).then(()=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 10000 : 0;
+        this.snackBar.open("Given user has succesfully blocked", true ? "Close" : undefined, config);
+        this.ngOnInit();
+      }).catch(err=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 10000 : 0;
+        this.snackBar.open(err, true ? "Close" : undefined, config);
       })
   }
-  blockUser(){
-      this.firestore.collection("users").doc(this.id).update({blockStatus:true});
-  }
+  
 
 }

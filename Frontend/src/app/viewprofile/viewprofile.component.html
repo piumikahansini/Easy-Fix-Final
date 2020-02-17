@@ -25,11 +25,17 @@
                     </div>
 
                 </div>
+                <div align="right" style="margin-right: 100px;">
+                    <button class="btn btn-danger" (click)="blockUser()" [disabled]="userDeatil.blockstatus" style="margin-right: 30px;">Block</button>
+                    <p><small style="color: red;" *ngIf="userDeatil.blockstatus">Already blocked user</small></p>
+                </div>
                 <div align="center">
                     <mat-card class="example-card" style="align-items: center;">
                     
                         <mat-card-content>
+                            
                             <div class="row">
+                                
                                 <mat-icon class="col-1 icon">perm_identity</mat-icon>
                                 <div class="col-3 left">
                                     <p>Name</p>
@@ -79,7 +85,7 @@
     
                         </mat-card-content>
                     </mat-card>
-                    <button (click)="Delete()">Block</button>
+                    
                 </div>
             </div>
     </div>

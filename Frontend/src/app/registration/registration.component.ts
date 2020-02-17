@@ -118,7 +118,8 @@ export class RegistrationComponent implements OnInit {
                 usertype:form.usertype,
                 nic:form.nic,
                 number:form.number,
-                profileImage:url
+                profileImage:url,
+                blockstatus:false,
                 
                 
               }).then(data=>{
@@ -166,6 +167,7 @@ export class RegistrationComponent implements OnInit {
                       nonhybrid:form.Non,
                       vehicleType:V_Types,
                       status:false,
+                      blockstatus:false,
                       profileImage:imgurl,
                       NICcopy:nicurl,
                   }).then(user=>{
@@ -206,6 +208,7 @@ export class RegistrationComponent implements OnInit {
                 email: form.email,
                 Name:form.name,
                 usertype:form.usertype,
+                blockstatus:false,
                 hybrid:form.Hybrid,
                 nonhybrid:form.Non,
                 number:form.number,
