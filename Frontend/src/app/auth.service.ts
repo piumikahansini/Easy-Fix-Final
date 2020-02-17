@@ -21,7 +21,7 @@ export class AuthService {
         this.logingStatus=true;
 
         var mycookie=JSON.parse(this.getCookie("Auth"));
-        this.username=mycookie.Firstname;
+        this.username=mycookie.name;
         console.log(mycookie)
       }
   }

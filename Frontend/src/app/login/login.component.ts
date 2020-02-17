@@ -47,22 +47,45 @@ export class LoginComponent implements OnInit {
         this.db.collection("users").doc(user.user.uid).get().subscribe(data=>{
           if(data.exists){
             var returnData=data.data();
+            if(returnData.usertype == "Service" || returnData.usertype == "Mechanic"){
+              if(returnData.status){
+                  var temp={
+                    id:user.user.uid,
+                    name:returnData.name,
+                    usertype:returnData.usertype,
+                    image:returnData.image
+                  }
+                  this.authe.username=temp.name;
+                  this.authe.setCookie("Auth",JSON.stringify(temp),1);
+                  console.log(this.authe.username);
+                  
+                  this.mystyle={
+                    'display':'none'
+                  }
+                  location.reload();
+              }else{
+                let config = new MatSnackBarConfig();
+                config.duration = true ? 20000 : 0;
+                this.snackBar.open("You have not get permision", true ? "OK" : undefined, config);
+              }
 
-            
-            var temp={
-              id:user.user.uid,
-              Firstname:returnData.FirstName,
-              Lastname:returnData.LastName,
-              usertype:returnData.usertype,
-              image:returnData.image
+            }else{
+              var temp={
+                id:user.user.uid,
+                name:returnData.name,
+                usertype:returnData.usertype,
+                image:returnData.image
+              }
+              this.authe.username=temp.name;
+              this.authe.setCookie("Auth",JSON.stringify(temp),1);
+              console.log(this.authe.username);
+              
+              this.mystyle={
+                'display':'none'
+              }
+              location.reload();
             }
-            this.authe.username=temp.Firstname;
-            this.authe.setCookie("Auth",JSON.stringify(temp),1);
             
-            this.mystyle={
-              'display':'none'
-            }
-            location.reload();
             // this.router.navigate(['./dashboard']);
           }
         })

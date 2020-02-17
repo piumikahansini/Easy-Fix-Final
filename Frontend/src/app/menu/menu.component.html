@@ -1,7 +1,7 @@
 <div  class="img">
     <div class="container" style="padding-top: 10px">
       
-        <div class="text-center container" style="margin-top: 50px;">
+        <div class="text-center container" style="margin-top: 50px;" [routerLink]="['/home']" routerLinkActive="router-link-active" >
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" [routerLink]="['../dashboard/']" routerLinkActive="router-link-active" >
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" [routerLink]="['../dashboard/registerRequests']" routerLinkActive="router-link-active" >
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >

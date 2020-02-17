@@ -34,7 +34,7 @@
       <li *ngIf="!auth.logingStatus" (click)="flagFalse()"><a routerLink="/registration" style="padding-right: 25px;" routerLinkActive="active">Sign Up</a></li >
       <li *ngIf="auth.logingStatus" (click)="flagFalse()"><a routerLink="/dashboard" style="padding-right: 25px;" routerLinkActive="active"><mat-icon>person</mat-icon>Profile</a></li>
       <li *ngIf="!auth.logingStatus"  ><a Onclick="id01.style.display='block'" style="width:auto;"  ><mat-icon>lock_open</mat-icon>{{Log}}</a></li>
-      <li *ngIf="auth.logingStatus" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{auth.name}}</a></li>
+      <li *ngIf="auth.logingStatus" (click)="signout()"><a style="width:auto;" ><mat-icon>lock_open</mat-icon>{{auth.username}}</a></li>
   </ul>
   
   </div>

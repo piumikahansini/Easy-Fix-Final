@@ -17,7 +17,7 @@
           <mat-accordion >
             <mat-expansion-panel *ngFor="let user of mechanics">
               <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title style="font-weight: bold;">
                 {{user.data.Name}} 
                 </mat-panel-title>
               
@@ -28,7 +28,11 @@
               <div>Phone Number: {{user.data.number}}</div>
               <div>Types of Vehicles being repaired: {{user.data.vehicleType}}</div>
               <!-- <div>{{user.data.v_type}}</div> -->
-              <div class="row"style="margin-bottom: 50px;">
+              <div class="row"style="margin-bottom: 50px;">                
+                <div class="col">profile Photo</div>
+                <div class="col">NIC Copy</div>
+              </div>
+              <div class="row"style="margin-bottom: 50px;">                
                 <div class="col"><img src="{{user.data.profileImage}}"></div>
                 <div class="col"><img src="{{user.data.NICcopy}}"></div>
               </div>
@@ -56,13 +60,19 @@
           <mat-accordion >
             <mat-expansion-panel *ngFor="let user of serviceCenters">
               <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title style="font-weight: bold;">
                 {{user.data.Name}}
                 </mat-panel-title>
               
               </mat-expansion-panel-header>
-              <div>{{user.data.email}}</div>
-              <img src="{{user.data.image}}">
+              <div>Email: {{user.data.email}}</div>
+              <div>Registration Number: {{user.data.registerNumber}}</div>
+              <div>Address: {{user.data.address}}</div>
+              <div>Phone Number: {{user.data.number}}</div>
+              <div>Hotline: {{user.data.hotline}}</div>
+              <div>Types of Vehicles being repaired: {{user.data.vehicleType}}</div>
+
+              <img src="{{user.data.certificate_img}}">
               <div>
                 <button style="margin-right: 20px;" (click)="approve(user.id)" type="button" class="btn btn-success">Accept</button>
                 <button (click)="delete(user.id)" type="button" class="btn btn-danger">Reject</button>

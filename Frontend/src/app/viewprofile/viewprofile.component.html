@@ -1,0 +1,85 @@
+<div  style="margin-left: -25px; margin-right: -25px;">
+
+    <div style="padding-top: 30px; padding-left: 20px; font-weight: 400;">
+        <h3>My Profile</h3>
+    </div>
+    
+    <div>
+        <hr  class="line">
+    </div>
+    
+   
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">person</mat-icon>
+                profile
+            </ng-template>
+            <div *ngIf="!flag" style="height:700px;"></div>
+            <div *ngIf="flag">
+                <div align="center" style="margin-top: 100px;">            
+                   
+                    <div *ngIf="userDeatil.usertype!='Service'">
+                        <img src="{{userDeatil.profileImage}}">
+                    </div>
+                    <div *ngIf="userDeatil.usertype=='Service'">
+                        <img src="{{userDeatil.certificate_img}}" style="max-width: 500px;">
+                    </div>
+
+                </div>
+                <div align="center">
+                    <mat-card class="example-card" style="align-items: center;">
+                    
+                        <mat-card-content>
+                            <div class="row">
+                                <mat-icon class="col-1 icon">perm_identity</mat-icon>
+                                <div class="col-4 left">
+                                    <p>Name</p>
+                                </div>
+                                <div class="col-8 right">
+                                    <p>{{userDeatil.name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <mat-icon class="col-1 icon">check_circle_outline</mat-icon>
+                                <div class="col-4 left">
+                                    <p>User Type</p>
+                                </div>
+                                <div class="col-8 right">
+                                    <p>{{userDeatil.usertype}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <mat-icon class="col-1 icon" >mail_outline</mat-icon>
+                                <div class="col-3 left">
+                                    <p>E-mail</p>
+                                </div>
+                                <div class="col-8 right" style="padding-left: 90px;">
+                                    <p>{{userDeatil.email}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <mat-icon class="col-1 icon">phone</mat-icon>
+                                <div class="col-3 left">
+                                    <p>Phone Number</p>
+                                </div>
+                                <div class="col-8 right" style="padding-left: 90px;">
+                                    <p>{{userDeatil.number}}</p>
+                                </div>
+                            </div>
+                            <div *ngIf="userDeatil.usertype=='Mechanic'">
+                              <div class="row">
+                                <mat-icon class="col-1 icon">commute</mat-icon>
+                                <div class="col-3 left">
+                                    <p>Reparing vehicle Types </p>
+                                </div>
+                                <div class="col-8 right" style="padding-left: 80px;">
+                                    <p *ngFor="let vehicle of userDeatil.vehicleType">{{vehicle}}</p>
+                                </div>
+                              </div> 
+                            </div>
+    
+                        </mat-card-content>
+                    </mat-card>
+                    <button (click)="Delete()">Block</button>
+                </div>
+            </div>
+    </div>

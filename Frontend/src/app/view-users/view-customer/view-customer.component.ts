@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { AngularFirestore } from'@angular/fire/firestore';
 import {MatTableDataSource} from '@angular/material/table';
-export interface PeriodicElement {
+import { Router } from '@angular/router';
+export interface User {
+  id:string,
   email: string,
-  Name:string,
+  name:string,
   usertype:string,
   nic:string,
   number:string,
@@ -23,7 +25,7 @@ export interface PeriodicElement {
 })
 
 export class ViewCustomerComponent implements OnInit {
-  displayedColumns: string[] = ['Name', 'email', 'usertype'];
+  displayedColumns: string[] = ['Name', 'email', 'usertype','id'];
   dataSource ;
   allData;
   userDetails=[];
@@ -31,9 +33,13 @@ export class ViewCustomerComponent implements OnInit {
   ID=[];
   constructor(
     private auth:AuthService,
-    private db:AngularFirestore
+    private db:AngularFirestore,
+    private router:Router
   ) { }
-
+  gotoProfile(id){
+    this.router.navigate(['./dashboard/viewprofile/'+id]);
+  }
+    
   ngOnInit() {
     var mycookie=JSON.parse(this.auth.getCookie("Auth"));
     console.log(mycookie.Firstname);
@@ -42,11 +48,14 @@ export class ViewCustomerComponent implements OnInit {
       console.log(val)
       this.userDetails=[];
       this.allData.forEach(element => {
-        console.log(element)
-        var temp:PeriodicElement;
-        this.ID.push(element.payload.doc.id);
-        temp=element.payload.doc.data();
-        this.userDetails.push(temp);
+        if(element.payload.doc.data().usertype == "Customer"){
+          var temp:User;
+          temp=element.payload.doc.data();
+          temp.id=element.payload.doc.id;
+          console.log(temp)
+          this.userDetails.push(temp);
+        }
+       
         
       });
       console.log(this.userDetails);

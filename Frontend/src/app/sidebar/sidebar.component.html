@@ -1,21 +1,23 @@
 
 
 <div class="sidebar text animation" >
-  <a href="#home"><i class="fa fa-fw fa-home"style="margin-top: 70px;"></i> Home</a>
+  <a  [routerLink]="['/home']" routerLinkActive="router-link-active" ><i class="fa fa-fw fa-home"style="margin-top: 10px;"></i> Home</a>
   <div><hr></div>
-  <a [routerLink]="['./registerRequests']" routerLinkActive="router-link-active" ><i class="fas fa-user-check"></i> Register Requests</a>
-  <div><hr></div>
-  <a [routerLink]="['./appointments']" routerLinkActive="router-link-active" ><i class="far fa-address-book"></i>Make Appoinments</a>
-  <div><hr></div>
-  <a [routerLink]="['./appointments']" routerLinkActive="router-link-active" ><i class="far fa-address-book"></i>Manage Appoinments</a>
-  <div><hr></div>
-  <a [routerLink]="['./viewUsers']" routerLinkActive="router-link-active" ><i class="fas fa-search"></i>Manage Users</a>
-  <div><hr></div>
+  <a *ngIf="userdetail.usertype == 'Admin'" [routerLink]="['./registerRequests']" routerLinkActive="router-link-active" ><i class="fas fa-user-check"></i> Register Requests</a>
+  <div *ngIf="userdetail.usertype == 'Admin'"><hr></div>
+  <a *ngIf="userdetail.usertype == 'Customer'" [routerLink]="['./appointments']" routerLinkActive="router-link-active" ><i class="far fa-address-book"></i>Make Appoinments</a>
+  <div *ngIf="userdetail.usertype == 'Customer'"><hr></div>
+  <a *ngIf="userdetail.usertype == 'Service'" [routerLink]="['./appointments']" routerLinkActive="router-link-active" ><i class="far fa-address-book"></i>Manage Appoinments</a>
+  <div *ngIf="userdetail.usertype == 'Service'" ><hr></div>
+  <a *ngIf="userdetail.usertype == 'Admin'" [routerLink]="['./viewUsers']" routerLinkActive="router-link-active" ><i class="fas fa-search"></i>Manage Users</a>
+  <div *ngIf="userdetail.usertype == 'Admin'"><hr></div>
   <a [routerLink]="['./profile']" routerLinkActive="router-link-active" ><i class="far fa-user"></i> Profile</a>
   <div><hr></div>
-  <a [routerLink]="['./issue_R']" routerLinkActive="router-link-active" ><i class="fas fa-file-signature"></i> Issue Reporting</a>
-  <div><hr></div>
-  <a [routerLink]="['./block_user']" routerLinkActive="router-link-active" ><i class="fas fa-user-lock"></i>Black list</a>
-  <div><hr></div>
+  <a [routerLink]="['./issue_R']"  *ngIf="userdetail.usertype == 'Customer' || userdetail.usertype == 'Customer'" routerLinkActive="router-link-active" ><i class="fas fa-file-signature"></i> Issue Reporting</a>
+  <div *ngIf="userdetail.usertype == 'Customer' || userdetail.usertype == 'Customer'"><hr></div>
+  <a  *ngIf="userdetail.usertype == 'Admin'" [routerLink]="['./block_user']" routerLinkActive="router-link-active" ><i class="fas fa-user-lock"></i>Black list</a>
+  <div *ngIf="userdetail.usertype == 'Admin'"><hr></div>
+  <a  *ngIf="userdetail.usertype == 'Admin'" [routerLink]="['./issue_h']" routerLinkActive="router-link-active" ><i class="fas fa-user-lock"></i>Issue Handling</a>
+  <div *ngIf="userdetail.usertype == 'Admin'"><hr></div>
   
 </div>

@@ -33,20 +33,13 @@ export class RegistrationComponent implements OnInit {
   vehicleTypeList: string[] = ['Motor Bike','Three-Wheeler','Car', 'Van','Jeep'];
 
   //vehicle type feild validation
- // vehicleType = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  // name = new FormControl('', [Validators.required, Validators.name]);
   items: Observable<any[]>;
   getErrorEmail() {
     return this.email.hasError('required') ? 'You must enter a value' :
       this.email.hasError('email') ? 'Not a valid email' :
         '';
-  }
-  // getErrorName() {
-  //   return this.name.hasError('required') ? 'You must enter a value' :
-  //       this.name.hasError('name') ? 'Not a valid email' :
-  //           '';
-  // }
+  } 
 
   fileSelect(event){
     this.image=event.target.files[0];
@@ -56,15 +49,8 @@ export class RegistrationComponent implements OnInit {
     this.NICcopy=event.target.files[0];
     console.log(this.image.name);
   }
-  // imageSelect(event){
-  //   this.image=event.target.files[0];
-  //   console.log(this.image.name);
-  // }
 
   Register(form ,V_Types){
-    
-    
-    
       
     if(form.usertype=="Customer"){
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
