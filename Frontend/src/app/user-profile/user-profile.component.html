@@ -17,7 +17,7 @@
         <div *ngIf="!flag" style="height:700px;"></div>
         <div *ngIf="flag">
             <div align="center" style="margin-top: 100px;">            
-                <img src="../../assets/img/769971_man_512x512.png" alt="Avatar">    
+                <img src="{{userDeatil.profileImage}}" alt="Avatar">    
             </div>
             <div align="center">
                 <mat-card class="example-card" style="align-items: center;">
@@ -70,6 +70,7 @@
                             </div>
                           </div> 
                         </div>
+                        
 
                     </mat-card-content>
                 </mat-card>
@@ -81,42 +82,50 @@
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">create</mat-icon>
             Edit
-        </ng-template>
+        </ng-template> 
         <div *ngIf="!flag" style="height:700px;"></div>
-        <div *ngIf="flag" >
+        <form *ngIf="flag" [formGroup]="editForm">
+            
             <div class="edit">
                 <mat-card class="example-card" >
                     <div class="row">
+                        <img src="{{userDeatil.profileImage}}" alt="">
+                        <label >Select your new Image</label>
+                        <input type="file" (change)="fileSelect($event.target)">
+        
+                    </div>
+                    <div class="row">
                         <mat-form-field appearance="legacy">
                             <mat-label>Legacy form field</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input matInput placeholder="Name" formControlName="name">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
                     </div>
                     <div class="row">            
                         <mat-form-field appearance="legacy">
                             <mat-label>Legacy form field</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input matInput placeholder="Email" formControlName="email">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
                     </div>
                     <div class="row" style="width: 800px;">    
                         <mat-form-field appearance="legacy">
                             <mat-label>Legacy form field</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input matInput placeholder="Phone number" formControlName="number">
                             <mat-icon matSuffix>create</mat-icon>
                         </mat-form-field>
                     </div>
                     <div class="row">    
                         <mat-form-field appearance="legacy">
                             <mat-label>Legacy form field</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input matInput placeholder="NIC" formControlName="nic">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
-                    </div>    
+                    </div>   
+                    <button class="btn btn-primary" (click)="updateProfile()">Update</button> 
             </mat-card>   
           </div>
-        </div> 
+        </form> 
     
     </mat-tab>
     

@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
   NICcopy:File=null;
   emailerr="";
   phoneerr="";
+  mainerr="";
  
   // select vehicle type
   disableSelect = new FormControl(false);
@@ -56,6 +57,7 @@ export class RegistrationComponent implements OnInit {
   checkEmail(email:string){
     if(email==''){
       this.emailerr="This field must be entered";
+      return;
     }
     var at=false;
     var dot=false;
@@ -92,8 +94,18 @@ export class RegistrationComponent implements OnInit {
 
   Register(form ,V_Types){
     
+    if((form.usertype=="")||(form.name=="")||(form.email=="")||(form.number=="")||(form.password=="")||(this.emailerr!="")){
+      this.mainerr="You must enter every field";
+      return;
+    }
+    console.log(form);
+    
       
     if(form.usertype=="Customer"){
+      if(!this.image || form.nic==""){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
@@ -132,7 +144,11 @@ export class RegistrationComponent implements OnInit {
         config.duration = true ? 2000 : 0;
         this.snackBar.open(error, true ? "Retry" : undefined, config);
       })      
-    }else if(form.usertype=="Mechanic"){
+    }else if(form.usertype=="Mechanic"  ){
+      if(!this.image || !this.NICcopy ||form.nic=="" ){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
       then(data=>{
         if(this.image!=null){
@@ -177,6 +193,10 @@ export class RegistrationComponent implements OnInit {
       })
 
     }else if(form.usertype=="Service"){
+      if(!this.NICcopy ||(form.R_number=="") || (form.hotline=="") || (form.hotline=="") || (form.address=="") ){
+        this.mainerr="You must upload a image and NIC scaned copy";
+        return ;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)
       .then(data=>{
         if(this.image!=null){
