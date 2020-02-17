@@ -19,8 +19,10 @@ import { ViewCustomerComponent } from './view-users/view-customer/view-customer.
 import { ViewServiceCentersComponent } from './view-users/view-service-centers/view-service-centers.component';
 import { IssueReportingComponent} from './issue-reporting/issue-reporting.component';
 import { BlockUserComponent } from './block-user/block-user.component';
+import { IssueHandlingComponent } from './issue-handling/issue-handling.component';
 
 import { from } from 'rxjs';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home',pathMatch:'full'},
@@ -36,11 +38,15 @@ const routes: Routes = [
     { path: 'appointments',component: AppointmentsComponent},
     { path: 'issue_R', component: IssueReportingComponent},
     { path: 'black_list', component:BlockUserComponent},
+    { path: 'issue_h', component:IssueHandlingComponent},
+    { path: 'viewprofile/:id', component:ViewprofileComponent},
+
     
     { path: 'viewUsers', component:ViewUsersComponent,children:[
       { path: 'viewMechanics', component:ViewMechcnicsComponent},
       { path: 'viewCustomers', component:ViewCustomerComponent},
-      { path: 'viewServiceCenters', component:ViewServiceCentersComponent}
+      { path: 'viewServiceCenters', component:ViewServiceCentersComponent},
+     
     ]},
     
   ]},

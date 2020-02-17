@@ -72,6 +72,8 @@ import { AgmCoreModule } from '@agm/core';
 
 import { IssueReportingComponent } from './issue-reporting/issue-reporting.component';
 import { BlockUserComponent } from './block-user/block-user.component';
+import { IssueHandlingComponent } from './issue-handling/issue-handling.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 
 
 
@@ -104,6 +106,8 @@ import { BlockUserComponent } from './block-user/block-user.component';
     ViewServiceCentersComponent,
     IssueReportingComponent,
     BlockUserComponent,
+    IssueHandlingComponent,
+    ViewprofileComponent,
     
     
     

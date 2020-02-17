@@ -72,7 +72,7 @@ export class RegisterRequestsComponent implements OnInit {
       dialogRef.afterClosed().subscribe((confirmed: boolean) => {
         if (confirmed) {
           this.db.collection("users").doc(id).update({
-            state:true
+            status:true
           })
         }
       });
