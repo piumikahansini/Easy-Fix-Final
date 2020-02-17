@@ -17,6 +17,8 @@ import { ViewMechcnicsComponent} from './view-users/view-mechcnics/view-mechcnic
 import { ViewUsersComponent} from './view-users/view-users.component';
 import { ViewCustomerComponent } from './view-users/view-customer/view-customer.component';
 import { ViewServiceCentersComponent } from './view-users/view-service-centers/view-service-centers.component';
+import { IssueReportingComponent} from './issue-reporting/issue-reporting.component';
+import { BlockUserComponent } from './block-user/block-user.component';
 
 import { from } from 'rxjs';
 
@@ -32,6 +34,8 @@ const routes: Routes = [
     { path: 'registerRequests',component: RegisterRequestsComponent},
     { path: 'profile',component: UserProfileComponent},
     { path: 'appointments',component: AppointmentsComponent},
+    { path: 'issue_R', component: IssueReportingComponent},
+    { path: 'black_list', component:BlockUserComponent},
     
     { path: 'viewUsers', component:ViewUsersComponent,children:[
       { path: 'viewMechanics', component:ViewMechcnicsComponent},

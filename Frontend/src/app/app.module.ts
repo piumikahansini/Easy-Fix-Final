@@ -69,7 +69,7 @@ import { ViewServiceCentersComponent } from './view-users/view-service-centers/v
 
 import { AgmCoreModule } from '@agm/core';
 
-import { GoogleMapsModule } from '@angular/google-maps';
+
 import { IssueReportingComponent } from './issue-reporting/issue-reporting.component';
 import { BlockUserComponent } from './block-user/block-user.component';
 
@@ -146,7 +146,7 @@ import { BlockUserComponent } from './block-user/block-user.component';
     ReactiveFormsModule,
     Ng2PageScrollModule,
     MatTabsModule,
-    GoogleMapsModule,
+    
 
 
 
