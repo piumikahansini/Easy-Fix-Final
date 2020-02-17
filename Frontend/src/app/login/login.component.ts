@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
               if(returnData.status){
                   var temp={
                     id:user.user.uid,
-                    name:returnData.name,
+                    Name:returnData.Name,
                     usertype:returnData.usertype,
                     image:returnData.image
                   }
-                  this.authe.username=temp.name;
+                  this.authe.username=temp.Name;
                   this.authe.setCookie("Auth",JSON.stringify(temp),1);
                   console.log(this.authe.username);
                   
@@ -72,11 +72,11 @@ export class LoginComponent implements OnInit {
             }else{
               var temp={
                 id:user.user.uid,
-                name:returnData.name,
+                Name:returnData.Name,
                 usertype:returnData.usertype,
                 image:returnData.image
               }
-              this.authe.username=temp.name;
+              this.authe.username=temp.Name;
               this.authe.setCookie("Auth",JSON.stringify(temp),1);
               console.log(this.authe.username);
               
