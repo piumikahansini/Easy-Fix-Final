@@ -48,9 +48,10 @@ export class ViewMechcnicsComponent implements OnInit {
       console.log(val)
       this.userDetails=[];
       this.allData.forEach(element => {
-        console.log(element)
+        // console.log(element)
         var temp:User;
-        if(element.payload.doc.data().usertype == "Mechanic"){
+        if(element.payload.doc.data().usertype == "Mechanic" && element.payload.doc.data().blockstatus==false){
+          console.log(temp);
           temp=element.payload.doc.data();
           temp.id=element.payload.doc.id;
           this.userDetails.push(temp);

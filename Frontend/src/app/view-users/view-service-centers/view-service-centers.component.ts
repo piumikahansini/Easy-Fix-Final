@@ -44,11 +44,12 @@ export class ViewServiceCentersComponent implements OnInit {
     console.log(mycookie.Firstname);
     this.db.collection("users").snapshotChanges().subscribe(val=>{
       this.allData=val;
-      console.log(val)
+      
       this.userDetails=[];
       this.allData.forEach(element => {
         var temp:User;
-        if(element.payload.doc.data().usertype == "Service"){
+        if(element.payload.doc.data().usertype == "Service" && element.payload.doc.data().blockstatus==false){
+          console.log(temp);
           temp=element.payload.doc.data();
           temp.id=element.payload.doc.id;
           this.userDetails.push(temp);

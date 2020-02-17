@@ -45,10 +45,10 @@ export class ViewCustomerComponent implements OnInit {
     console.log(mycookie.Firstname);
     this.db.collection("users").snapshotChanges().subscribe(val=>{
       this.allData=val;
-      console.log(val)
+      // console.log(val)
       this.userDetails=[];
       this.allData.forEach(element => {
-        if(element.payload.doc.data().usertype == "Customer"){
+        if(element.payload.doc.data().usertype == "Customer" && element.payload.doc.data().blockstatus==false){
           var temp:User;
           temp=element.payload.doc.data();
           temp.id=element.payload.doc.id;

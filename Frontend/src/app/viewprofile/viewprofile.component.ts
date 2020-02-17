@@ -37,6 +37,18 @@ export class ViewprofileComponent implements OnInit {
         this.snackBar.open(err, true ? "Close" : undefined, config);
       })
   }
+  unBlockUser(){
+    this.firestore.collection("users").doc(this.id).update({blockstatus:false}).then(()=>{
+      let config = new MatSnackBarConfig();
+      config.duration = true ? 10000 : 0;
+      this.snackBar.open("Given user has succesfully unblocked", true ? "Close" : undefined, config);
+      this.ngOnInit();
+    }).catch(err=>{
+      let config = new MatSnackBarConfig();
+      config.duration = true ? 10000 : 0;
+      this.snackBar.open(err, true ? "Close" : undefined, config);
+    })
+}
   
 
 }

@@ -39,6 +39,7 @@ const routes: Routes = [
     { path: 'issue_R', component: IssueReportingComponent},
     { path: 'black_list', component:BlockUserComponent},
     { path: 'issue_h', component:IssueHandlingComponent},
+    { path: 'block_user', component:BlockUserComponent},
     { path: 'viewprofile/:id', component:ViewprofileComponent},
 
     

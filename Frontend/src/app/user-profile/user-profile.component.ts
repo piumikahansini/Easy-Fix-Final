@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit {
       this.userDeatil.id=mycookie.id;
       console.log(this.userDeatil);
       this.editForm=new FormGroup({
-        name: new FormControl(this.userDeatil.name),
+        name: new FormControl(this.userDeatil.Name),
         email: new FormControl(this.userDeatil.email),
         number: new FormControl(this.userDeatil.number),
         nic: new FormControl(this.userDeatil.nic),
