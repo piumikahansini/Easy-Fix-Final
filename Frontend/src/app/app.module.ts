@@ -112,7 +112,7 @@ import { BlockUserComponent } from './block-user/block-user.component';
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCDDr7AeaoDxPniXU1L5Nv4VntQ0lMe1Wc',
+      apiKey: 'AIzaSyAFCDtNXwUO2RlzacQ7_yQNRblt0NraR5c',
       libraries: ['places']
     }),
     MatCheckboxModule,

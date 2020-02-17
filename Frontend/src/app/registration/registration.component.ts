@@ -26,29 +26,26 @@ export class RegistrationComponent implements OnInit {
   error="This field must be entered";
   image:File=null;
   NICcopy:File=null;
+  emailerr="";
+  phoneerr="";
  
   // select vehicle type
   disableSelect = new FormControl(false);
   vehicleType = new FormControl();
   vehicleTypeList: string[] = ['Motor Bike','Three-Wheeler','Car', 'Van','Jeep'];
 
-  //vehicle type feild validation
- // vehicleType = new FormControl('', [Validators.required]);
-  email = new FormControl('', [Validators.required, Validators.email]);
-  // name = new FormControl('', [Validators.required, Validators.name]);
+ 
+  
+  
   items: Observable<any[]>;
-  getErrorEmail() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
-  }
-  // getErrorName() {
-  //   return this.name.hasError('required') ? 'You must enter a value' :
-  //       this.name.hasError('name') ? 'Not a valid email' :
-  //           '';
+  // getErrorEmail() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //     this.email.hasError('email') ? 'Not a valid email' :
+  //       '';
   // }
-
+ 
   fileSelect(event){
+    
     this.image=event.target.files[0];
     console.log(this.image.name);
   }
@@ -56,14 +53,44 @@ export class RegistrationComponent implements OnInit {
     this.NICcopy=event.target.files[0];
     console.log(this.image.name);
   }
+  checkEmail(email:string){
+    if(email==''){
+      this.emailerr="This field must be entered";
+    }
+    var at=false;
+    var dot=false;
+    console.log(email);
+    if(email.indexOf('@')!=-1){
+      at=true;
+    }
+    if(email.indexOf('.')!=-1){
+      dot=true;
+    }
+    if(dot && at){
+      this.emailerr="";
+    }else{
+      this.emailerr="Please enter valid email";
+    }
+  }
+  checkPhone(number:string){
+    if(number.length!=10){
+      this.phoneerr="Phone number has 10 digit Please enter valid one";
+      return;
+    }
+    for(var i=0;number.length;i++){
+      if(parseInt(number[i])==NaN){
+        this.phoneerr="Please Enter only number";
+        return;
+      }
+    }
+    this.phoneerr="";
+  }
   // imageSelect(event){
   //   this.image=event.target.files[0];
   //   console.log(this.image.name);
   // }
 
   Register(form ,V_Types){
-    
-    
     
       
     if(form.usertype=="Customer"){
