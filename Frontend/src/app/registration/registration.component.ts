@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit {
           this.afstorage.ref('profilepics/customer/'+this.image.name).put(this.image).then(image=>{
             this.afstorage.ref('profilepics/customer/'+this.image.name).getDownloadURL().subscribe(url=>{
               this.firestore.collection("users").doc(data.user.uid).set({
-                phoneNumber:form.number,
+                
                 email: form.email,
                 Name:form.name,
                 usertype:form.usertype,

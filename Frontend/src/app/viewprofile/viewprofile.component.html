@@ -9,10 +9,6 @@
     </div>
     
    
-            <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">person</mat-icon>
-                profile
-            </ng-template>
             <div *ngIf="!flag" style="height:700px;"></div>
             <div *ngIf="flag">
                 <div align="center" style="margin-top: 100px;">            
@@ -31,16 +27,16 @@
                         <mat-card-content>
                             <div class="row">
                                 <mat-icon class="col-1 icon">perm_identity</mat-icon>
-                                <div class="col-4 left">
+                                <div class="col-3 left">
                                     <p>Name</p>
                                 </div>
                                 <div class="col-8 right">
-                                    <p>{{userDeatil.name}}</p>
+                                    <p>{{userDeatil.Name}}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <mat-icon class="col-1 icon">check_circle_outline</mat-icon>
-                                <div class="col-4 left">
+                                <div class="col-3 left">
                                     <p>User Type</p>
                                 </div>
                                 <div class="col-8 right">
@@ -72,7 +68,7 @@
                                     <p>Reparing vehicle Types </p>
                                 </div>
                                 <div class="col-8 right" style="padding-left: 80px;">
-                                    <p *ngFor="let vehicle of userDeatil.vehicleType">{{vehicle}}</p>
+                                    <p >{{userDeatil.vehicleType}}</p>
                                 </div>
                               </div> 
                             </div>
