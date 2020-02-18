@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
               }else{
                 let config = new MatSnackBarConfig();
                 config.duration = true ? 20000 : 0;
-                this.snackBar.open("You have not get permision", true ? "OK" : undefined, config);
+                this.snackBar.open("You have not get permision yet", true ? "OK" : undefined, config);
               }
 
             }else{

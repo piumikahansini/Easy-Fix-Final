@@ -129,11 +129,18 @@ export class RegistrationComponent implements OnInit {
                 this.snackBar.open("You have registered successfully.Please login now", true ? "Retry" : undefined, config);
               })
               .catch(error=>{
+                let config = new MatSnackBarConfig();
+                config.duration = true ? 10000 : 0;
+                this.snackBar.open(error, true ? "Retry" : undefined, config);
+
                 console.log(error);
               })
             })
 
           }).catch(error=>{
+            let config = new MatSnackBarConfig();
+            config.duration = true ? 10000 : 0;
+            this.snackBar.open(error, true ? "Retry" : undefined, config);
             console.error(error);
           })
         }else{
@@ -177,6 +184,9 @@ export class RegistrationComponent implements OnInit {
                     this.snackBar.open("Yor request have been sent. Please wait for a confirmation", true ? "Retry" : undefined, config);
                   })
                   .catch(err=>{
+                    let config = new MatSnackBarConfig();
+                    config.duration = true ? 10000 : 0;
+                    this.snackBar.open(err, true ? "Retry" : undefined, config);
                     console.error(err);
                   })
 
@@ -185,11 +195,17 @@ export class RegistrationComponent implements OnInit {
             })  
 
           }).catch(err=>{
+            let config = new MatSnackBarConfig();
+            config.duration = true ? 10000 : 0;
+            this.snackBar.open(err, true ? "Retry" : undefined, config);
             console.error(err);
           })
         }
       })
       .catch(error=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 10000 : 0;
+        this.snackBar.open(error, true ? "Retry" : undefined, config);
         console.error(error);
         return;
       })
@@ -230,6 +246,9 @@ export class RegistrationComponent implements OnInit {
           )
         }
       }).catch(error=>{
+        let config = new MatSnackBarConfig();
+        config.duration = true ? 10000 : 0;
+        this.snackBar.open(error, true ? "Retry" : undefined, config);
         console.error(error);
         return;
       }

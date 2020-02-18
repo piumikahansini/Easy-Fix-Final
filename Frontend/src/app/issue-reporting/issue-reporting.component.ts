@@ -13,7 +13,7 @@ export class IssueReportingComponent implements OnInit {
   contactusForm = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
-    phone: new FormControl(''),
+    number: new FormControl(''),
     message: new FormControl(''),
     register:new FormControl(true),
   });
@@ -34,7 +34,7 @@ export class IssueReportingComponent implements OnInit {
       this.contactusForm = new FormGroup({
         name: new FormControl(user.Name),
         email: new FormControl(user.email),
-        phone: new FormControl(user.phone),
+        number: new FormControl(user.number),
         message: new FormControl(user.message),
         register:new FormControl(true),
       });
