@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
                   this.mystyle={
                     'display':'none'
                   }
-                  location.reload();
+                  this.router.navigate(['./menu']);
               }else{
                 let config = new MatSnackBarConfig();
                 config.duration = true ? 20000 : 0;
@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
               this.mystyle={
                 'display':'none'
               }
-              location.reload();
+              this.router.navigate(['./menu']);
             }
             
             // this.router.navigate(['./dashboard']);
