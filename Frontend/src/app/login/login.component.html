@@ -1,4 +1,4 @@
-<form class="modal-content animate"  (ngSubmit)="Login(form.value,id01)" #form="ngForm" style="width: 500px;" [ngStyle]="mystyle">
+<form class="modal-content animate"   #form="ngForm" style="width: 500px;" >
     
     <!-- Material input -->
     <div align="right" class="close_button">
@@ -20,24 +20,24 @@
         <div>
             <mat-form-field>
                 <mat-label>Username</mat-label>
-            <input matInput placeholder="Email or Phone Number" name="username" ngModel>
+            <input matInput placeholder="Email " name="email" ngModel>
                 <mat-icon matSuffix>account_circle</mat-icon>
             </mat-form-field>
         </div>    
 
                                   
         <div>
-                <mat-form-field>
-                        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="psw" ngModel>
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-form-field>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="psw" ngModel>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                      </mat-form-field>
+                    </button>
+                </mat-form-field>
         </div>                 
     </div>
         
     <div>
-        <button class="login-btn btn-rounded" mat-raised-button color="warn" >Login</button>             
+        <button class="login-btn btn-rounded" mat-raised-button color="warn" (click)="Login(form.value)">Login</button>             
     </div>
     
     <div class="link">Don't have an account? <a href="/register">Register Now !</a></div>

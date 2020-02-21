@@ -59,47 +59,4 @@ export class AuthService {
     this.setCookie("Auth","",-1);
     this.auth.auth.signOut();
   }
-  // createaaaa(){
-    
-  //   return cookiedate;
-  // }
-  
-
-  // SignIn(email,password){
-  //   this.afAuth.auth.signInWithEmailAndPassword(email,password).
-  //     then(user=>{
-  //       // console.log(user.user)
-  //       console.log(user.user.uid);
-  //       this.token=user.user.uid;
-  //       this.db.collection("users").doc(this.token).get().subscribe(function(doc){
-  //         if(doc.exists){
-           
-            
-  //           // this.router.navigate(['../'])
-  //           this.logingStatus=true;
-  //           window.location.reload();
-             
-  //           return 1;
-  //         }else{
-  //           let config = new MatSnackBarConfig();
-  //           config.duration = true ? 2000 : 0;
-  //           this.snackBar.open("Password or email is incorrect ..! ", true ? "Retry" : undefined, config);
-  //           console.log("errorr");
-  //           return 0;
-  //         }  
-  //       })
-  //     })
-  //     .catch(error=>{
-  //       let config = new MatSnackBarConfig();
-  //       config.duration = true ? 2000 : 0;
-  //       this.snackBar.open("Password or email is incorrect ..! ", true ? "Retry" : undefined, config);
-  //     });
-  //     return 0;
-    
-  // }
-  
-  
 }
- // (YYYY, MM, DD, Hr, Min, Sec) 
-
- 

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { Router} from '@angular/router';
 import { AuthService} from '../auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { style } from '@angular/animations';
+
 
 @Component({
   selector: 'app-login',
@@ -13,28 +11,23 @@ import { style } from '@angular/animations';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
-  mystyle = {
-    'display':'block'
-  }
   constructor(
-    private router: Router,
-    private http: HttpClient,
-    public snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private fireauth:AngularFireAuth,
     private db:AngularFirestore,
-    public authe:AuthService,
+    private authe:AuthService,
     ) { }
 
   ngOnInit() { }
 
   Login(formData){
     
-    if(formData.username == ''){
+    //when username field empty
+    if(formData.email == ''){
       let config = new MatSnackBarConfig();
           config.duration = true ? 2000 : 0;
-          this.snackBar.open("User ID is empty..! ", true ? "Retry" : undefined, config);
-    }
+          this.snackBar.open("Email is empty..! ", true ? "Retry" : undefined, config);
+    }     //when password field empty
     else if(formData.psw == ''){
       let config = new MatSnackBarConfig();
       config.duration = true ? 2000 : 0;
@@ -42,35 +35,34 @@ export class LoginComponent implements OnInit {
     }
     else{
       
-      this.fireauth.auth.signInWithEmailAndPassword(formData.username,formData.psw).then(user=>{
-        
+      this.fireauth.auth.signInWithEmailAndPassword(formData.email,formData.psw).then(user=>{
+        // user is user token
+        // user token=user.user.id    //sign in the user with email and password and if there is stored data; they are returend
         this.db.collection("users").doc(user.user.uid).get().subscribe(data=>{
           if(data.exists){
             var returnData=data.data();
-            if(returnData.blockstatus){
+            if(returnData.blockstatus){  //blocked users cannot login
               let config = new MatSnackBarConfig();
               config.duration = true ? 20000 : 0;
-              this.snackBar.open("You Don't  Have Permision to logging Please contact admin ", true ? "OK" : undefined, config);
+              this.snackBar.open("You Don't  Have Permision to login. Please contact admin ", true ? "OK" : undefined, config);
               return ;
             }
-            if(returnData.usertype == "Service" || returnData.usertype == "Mechanic"){
+            if(returnData.usertype == "Service"){
               if(returnData.status){
                   var temp={
-                    id:user.user.uid,
+                    id:user.user.uid, //token is not a field of document.so it should be get separatly
                     Name:returnData.Name,
                     usertype:returnData.usertype,
-                    image:returnData.image
                   }
                   this.authe.username=temp.Name;
-                  this.authe.setCookie("Auth",JSON.stringify(temp),1);
-                  console.log(this.authe.username);
-                  
-                  this.mystyle={
-                    'display':'none'
-                  }
-                  this.router.navigate(['./menu']);
+                  this.authe.setCookie("Auth",JSON.stringify(temp),1); //set cookie
+                  // console.log(this.authe.username);
+                  let config = new MatSnackBarConfig();
+                  config.duration = true ? 20000 : 0;
+                  this.snackBar.open("You Have Logged in Succesfully ", true ? "OK" : undefined, config);
+                  location.reload();
               }else{
-                let config = new MatSnackBarConfig();
+                let config = new MatSnackBarConfig(); //blocked user
                 config.duration = true ? 20000 : 0;
                 this.snackBar.open("You have not get permision yet", true ? "OK" : undefined, config);
               }
@@ -80,32 +72,27 @@ export class LoginComponent implements OnInit {
                 id:user.user.uid,
                 Name:returnData.Name,
                 usertype:returnData.usertype,
-                image:returnData.image
               }
               this.authe.username=temp.Name;
               this.authe.setCookie("Auth",JSON.stringify(temp),1);
               console.log(this.authe.username);
+              let config = new MatSnackBarConfig();
+              config.duration = true ? 20000 : 0;
+              this.snackBar.open("You Have Logged in Succesfully ", true ? "OK" : undefined, config);
+              location.reload();
               
-              this.mystyle={
-                'display':'none'
-              }
-              this.router.navigate(['./menu']);
             }
-            
-            // this.router.navigate(['./dashboard']);
           }
         })
       }).catch(err=>{
         let config = new MatSnackBarConfig();
         config.duration = true ? 2000 : 0;
-        this.snackBar.open("Password or Email Incorect..!", true ? "Retry" : undefined, config);
+        this.snackBar.open("Password or Email Incorrect..!", true ? "Retry" : undefined, config);
       })
     }
   }
 }
 
-// me signout karana eka 
-    // this.afAuth.auth.signOut()
 
     
 

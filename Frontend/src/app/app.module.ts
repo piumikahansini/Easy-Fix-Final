@@ -29,7 +29,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
-//import {CookieService} from 'ngx-cookie-service';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,7 +60,6 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
 import { AuthService} from './auth.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { TopbarComponent } from './topbar/topbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ViewMechcnicsComponent } from './view-users/view-mechcnics/view-mechcnics.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
@@ -97,7 +96,6 @@ import { ViewprofileComponent } from './viewprofile/viewprofile.component';
     RegisterRequestsComponent,
     UserProfileComponent,
     SidebarComponent,
-    TopbarComponent,
     ConfirmationDialogComponent,
     MenuComponent,
     ViewMechcnicsComponent,
@@ -150,18 +148,12 @@ import { ViewprofileComponent } from './viewprofile/viewprofile.component';
     ReactiveFormsModule,
     Ng2PageScrollModule,
     MatTabsModule,
-    
-
-
-
+    MatProgressBarModule,
     MatTableModule,
     MatMenuModule,
-
-    //CookieService 
-
   ],
   providers: [
-    
+    AuthService
   ],
   bootstrap: [AppComponent],
   exports:[

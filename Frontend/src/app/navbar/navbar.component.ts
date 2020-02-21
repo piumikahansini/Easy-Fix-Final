@@ -24,34 +24,14 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    if(localStorage.getItem("loc")){
-      this.flag=false;
-    }
-    if(this.auth.getCookie("Auth")==''){
-      this.Log="Login"  
-
-    }else{
-
-      var data=JSON.parse(this.auth.getCookie("Auth"));
-      console.log(data)
-      this.Log=data.name;
-      console.log(this.Log);
-    }
+    
   }
-  flagFalse(){
-    window.localStorage.setItem("loc","false");
-    this.flag=false;
-  }
-  flagTrue(){
-    localStorage.removeItem("loc");
-    this.flag=true;
-  }
+ 
   signout(){
     this.auth.Singout();
-    this.Log="Login";
     this.auth.logingStatus=false;
-    localStorage.removeItem("loc");
-    this.route.navigate(['/']);2
+   
+    this.route.navigate(['/']);
 
   }
 }

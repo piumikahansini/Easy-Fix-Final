@@ -1,5 +1,5 @@
 <div  class="img">
-    <div class="container" style="padding-top: 10px" *ngIf="">
+    <div class="container" style="padding-top: 10px" >
       
         <div class="text-center container" style="margin-top: 50px;" [routerLink]="['/home']" routerLinkActive="router-link-active" >
             <div class="row" >
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" *ngIf="usertype=='Service'">
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container" [routerLink]="['../dashboard/registerRequests']" routerLinkActive="router-link-active" >
+        <div class="text-center container" [routerLink]="['../dashboard/registerRequests']" routerLinkActive="router-link-active" *ngIf="usertype=='Service'">
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" *ngIf="usertype=='Customer'">
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" *ngIf="usertype=='Admin'" [routerLink]="['../dashboard/viewUsers']" routerLinkActive="router-link-active">
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >
@@ -85,9 +85,9 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" *ngIf="usertype=='Customer' || usertype=='Service'">
             <div class="row" >
-                <div class="col-md-6" style="margin-top: 5px;">
+                <div class="col-md-6" style="margin-top: 5px;" [routerLink]="['../dashboard/issue_h']">
                     <div class="row menu_div" >
                         <div class="col-md-2 menu_icon_back">
                             <i class="material-icons menu_icon">error</i>
@@ -99,7 +99,21 @@
                 </div>
             </div>
         </div>
-        <div class="text-center container">
+        <div class="text-center container" *ngIf="usertype=='Admin'"  [routerLink]="['../dashboard/block_user']" routerLinkActive="router-link-active">
+            <div class="row" >
+                <div class="col-md-6" style="margin-top: 5px;">
+                    <div class="row menu_div" >
+                        <div class="col-md-2 menu_icon_back">
+                            <i class="material-icons menu_icon">error</i>
+                        </div>
+                        <div class="col-md-10 menu_text_back" style="color:white;">
+                            <p>Issue Handling</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center container" *ngIf="usertype=='Admin'" [routerLink]="['../dashboard/block_user']" routerLinkActive="router-link-active">
             <div class="row" >
                 <div class="col-md-6" style="margin-top: 5px;">
                     <div class="row menu_div" >

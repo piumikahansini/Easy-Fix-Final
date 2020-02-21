@@ -12,16 +12,13 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./register-requests.component.scss']
 })
 export class RegisterRequestsComponent implements OnInit {
-  loggin="Loging";
+
   
   mechanics=[];
   serviceCenters=[];
   temp=[];
   panelOpenState = false;
-  user={
-    Firstname:"Piumika",
-
-  }
+ 
 
   constructor(
     private auth:AuthService,private db:AngularFirestore,
@@ -44,7 +41,7 @@ export class RegisterRequestsComponent implements OnInit {
         // console.log(user);
         if(user.data.status===false){
           console.log(user);
-          if(user.data.usertype == "Mechanic"){
+          if(user.data.usertype == "Mechanic" || user.data.usertype == "mechanic" ){
             console.log(user);
             this.mechanics.push(user);
           }else if(user.data.usertype == "Service"){

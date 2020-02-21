@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 export interface User {
   id:string,
   email: string,
-  name:string,
+  Name:string,
   usertype:string,
   nic:string,
   number:string,
@@ -15,7 +15,6 @@ export interface User {
   vehicleType:string,
   status:string,
   profileImage:string,
-  NICcopy:string,
 }
 
 @Component({
@@ -36,16 +35,13 @@ export class ViewCustomerComponent implements OnInit {
     private db:AngularFirestore,
     private router:Router
   ) { }
-  gotoProfile(id){
-    this.router.navigate(['./dashboard/viewprofile/'+id]);
-  }
+  
     
   ngOnInit() {
     var mycookie=JSON.parse(this.auth.getCookie("Auth"));
     console.log(mycookie.Firstname);
     this.db.collection("users").snapshotChanges().subscribe(val=>{
       this.allData=val;
-      // console.log(val)
       this.userDetails=[];
       this.allData.forEach(element => {
         if(element.payload.doc.data().usertype == "Customer" && element.payload.doc.data().blockstatus==false){
@@ -58,10 +54,12 @@ export class ViewCustomerComponent implements OnInit {
        
         
       });
-      console.log(this.userDetails);
       this.dataSource= new MatTableDataSource(this.userDetails);
       this.flag=true;
     }); 
+  }
+  gotoProfile(id){
+    this.router.navigate(['./dashboard/viewprofile/'+id]);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

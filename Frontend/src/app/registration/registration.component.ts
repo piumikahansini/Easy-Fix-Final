@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
-// import { FirebaseDatabase} from '@angular/fire';
 import { Observable } from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireStorage } from 'angularfire2/storage';
@@ -27,26 +26,15 @@ export class RegistrationComponent implements OnInit {
   image:File=null;
   NICcopy:File=null;
   emailerr="";
-  phoneerr="";
+  perror="";
   mainerr="";
  
-  // select vehicle type
+
   disableSelect = new FormControl(false);
   vehicleType = new FormControl();
   vehicleTypeList: string[] = ['Motor Bike','Three-Wheeler','Car', 'Van','Jeep'];
-
- 
-  
-  
   items: Observable<any[]>;
-  // getErrorEmail() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :
-  //     this.email.hasError('email') ? 'Not a valid email' :
-  //       '';
-  // }
- 
   fileSelect(event){
-    
     this.image=event.target.files[0];
     console.log(this.image.name);
   }
@@ -62,10 +50,10 @@ export class RegistrationComponent implements OnInit {
     var at=false;
     var dot=false;
     console.log(email);
-    if(email.indexOf('@')!=-1){
+    if(email.indexOf('@')!=-1){  
       at=true;
     }
-    if(email.indexOf('.')!=-1){
+    if(email.indexOf('.')!=-1){ 
       dot=true;
     }
     if(dot && at){
@@ -74,27 +62,17 @@ export class RegistrationComponent implements OnInit {
       this.emailerr="Please enter valid email";
     }
   }
-  checkPhone(number:string){
-    if(number.length!=10){
-      this.phoneerr="Phone number has 10 digit Please enter valid one";
-      return;
+  checkPhone(phone:string){
+    if(phone.indexOf("07")!=0){
+      this.perror="Invalid format";
+    }else{
+      this.perror="";
     }
-    for(var i=0;number.length;i++){
-      if(parseInt(number[i])==NaN){
-        this.phoneerr="Please Enter only number";
-        return;
-      }
-    }
-    this.phoneerr="";
   }
-  // imageSelect(event){
-  //   this.image=event.target.files[0];
-  //   console.log(this.image.name);
-  // }
 
   Register(form ,V_Types){
     
-    if((form.usertype=="")||(form.name=="")||(form.email=="")||(form.number=="")||(form.password=="")||(this.emailerr!="")){
+    if((form.usertype=="")||(form.name=="")||(form.email=="")||(form.number=="")||(form.password=="")||(this.emailerr!="")||(V_Types==null)){
       this.mainerr="You must enter every field";
       return;
     }
@@ -103,7 +81,7 @@ export class RegistrationComponent implements OnInit {
       
     if(form.usertype=="Customer"){
       if(!this.image || form.nic==""){
-        this.mainerr="You must upload a image and NIC scaned copy";
+        this.mainerr="You must upload a image and NIC ";
         return ;
       }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
@@ -143,8 +121,6 @@ export class RegistrationComponent implements OnInit {
             this.snackBar.open(error, true ? "Retry" : undefined, config);
             console.error(error);
           })
-        }else{
-
         }
       })
       .catch(error=>{
@@ -154,7 +130,7 @@ export class RegistrationComponent implements OnInit {
       })      
     }else if(form.usertype=="Mechanic"  ){
       if(!this.image || !this.NICcopy ||form.nic=="" ){
-        this.mainerr="You must upload a image and NIC scaned copy";
+        this.mainerr="Every field must be entered";
         return ;
       }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password).
@@ -211,8 +187,8 @@ export class RegistrationComponent implements OnInit {
       })
 
     }else if(form.usertype=="Service"){
-      if(!this.NICcopy ||(form.R_number=="") || (form.hotline=="") || (form.hotline=="") || (form.address=="") ){
-        this.mainerr="You must upload a image and NIC scaned copy";
+      if(!this.NICcopy ||(form.R_number=="") || (form.hotline=="") || (form.hotline=="") || (form.address=="") || (V_Types==null) ){
+        this.mainerr="Every field must be entered";
         return ;
       }
       this.afAuth.auth.createUserWithEmailAndPassword(form.email,form.password)

@@ -13,12 +13,12 @@ import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
 export class UserProfileComponent implements OnInit {
 
   editForm=new FormGroup({
-    name: new FormControl(''),
+    Name: new FormControl(''),
     email: new FormControl(''),
     number: new FormControl(''),
     nic: new FormControl(''),
+    hotline:new FormControl('')
   });
-  // snackBar: any;
   
   constructor(private auth:AuthService,private db:AngularFirestore,private storage:AngularFireStorage,private snackBar:MatSnackBar) { }
 
@@ -33,14 +33,15 @@ export class UserProfileComponent implements OnInit {
       this.userDeatil.id=mycookie.id;
       console.log(this.userDeatil);
       this.editForm=new FormGroup({
-        name: new FormControl(this.userDeatil.Name),
+        Name: new FormControl(this.userDeatil.Name),
         email: new FormControl(this.userDeatil.email),
         number: new FormControl(this.userDeatil.number),
         nic: new FormControl(this.userDeatil.nic),
+        hotline:new FormControl(this.userDeatil.hotline)
       });
       this.flag=true;
     })
-    
+      
 
   }
   fileSelect(img){
@@ -51,8 +52,8 @@ export class UserProfileComponent implements OnInit {
     console.log(this.editForm.value);
       this.db.collection("users").doc(this.userDeatil.id).update(this.editForm.value).then(()=>{
         if(this.image){
-          this.storage.ref('profilepic/'+this.userDeatil.usertype+'/'+this.image.name).put(this.image).then(img=>{
-            this.storage.ref('profilepic/'+this.userDeatil.usertype+'/'+this.image.name).getDownloadURL( ).subscribe(url=>{
+          this.storage.ref('profilepic/'+this.userDeatil.usertype+'/'+this.image.name).put(this.image).then(()=>{
+            this.storage.ref('profilepic/'+this.userDeatil.usertype+'/'+this.image.name).getDownloadURL().subscribe(url=>{
               this.db.collection('users').doc(this.userDeatil.id).update({profileImage:url}).then(()=>{
                 let config = new MatSnackBarConfig();
                   config.duration = true ? 5000 : 0;
@@ -74,8 +75,7 @@ export class UserProfileComponent implements OnInit {
                   location.reload();
         }
       })
-    var path='profilepic/'+this.userDeatil.usertype+'/'+this.image.name
-    console.log(path)
+    
   }
 
 }

@@ -6,3 +6,13 @@ hr{
     margin-left: 15px;
     margin-right: 15px;
   }
+  .progressbar{
+    background: linear-gradient(rgb(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    width: auto;
+    height: 650px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: -15px;
+    margin-right:-20px;
+}

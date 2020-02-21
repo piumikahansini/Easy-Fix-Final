@@ -13,23 +13,20 @@
                     <form #ngForm="ngForm">
                         <div class="form-container" style="padding: 10px 80px 10px 80px;">
                             <mat-form-field>
-                                    <input matInput placeholder="Name" name="name"  ngModel #name required>
-                                    <mat-error >{{error}}</mat-error>
+                                <input matInput placeholder="Name" name="name"  ngModel #name required>
+                                <mat-error >{{error}}</mat-error>
                             </mat-form-field>
-                            <mat-form-field>
-                                    
-                                    <input matInput placeholder="Enter your email" name="email" required ngModel (blur)="checkEmail($event.target.value)">
-                                        
-                                        
-                                        
+                            <mat-form-field>         
+                                    <input matInput placeholder="Enter your email" name="email" required ngModel (blur)="checkEmail($event.target.value)">            
                             </mat-form-field>         
                             <small style="color: red;">{{emailerr}}</small>
                             <mat-form-field>
-                                <input matInput #input maxlength="10" minlength="10" placeholder="Phone Number" required name="number" ngModel >
-                               
+                                <input matInput #input maxlength="10" minlength="10" placeholder="Phone Number" required name="number" ngModel (blur)="checkPhone($event.target.value)" >
+                                <mat-hint>Ex:07xxxxxxxx</mat-hint>
+                               <mat-error>You should enter 10 digits</mat-error>
                                                 
                              </mat-form-field>
-                             <small style="color: red;">{{phoneerr}}</small>
+                             <small style="color: red;">{{perror}}</small>
                             
                             <div class="row">
                                 <div class="col">        
@@ -50,21 +47,18 @@
                         <!-- customer form -->
                         <div *ngIf="ngForm.value.usertype=='Customer'">
                             <div class="form-container" style="padding: 10px 80px 10px 80px;">
-                                
                                     <mat-form-field>
-                                        <input matInput #input maxlength="12" placeholder="NIC" required name="nic" ngModel>
+                                        <input matInput #input minlength="10" maxlength="12" placeholder="NIC" required name="nic" ngModel>
                                         <mat-error >{{error}}</mat-error>
                                     </mat-form-field>
                                     <div class="file-upload-wrapper">
                                         <mat-label>Upload Profile Picture</mat-label>
                                         <input type="file" id="input-file-now" (change)="fileSelect($event)" class="file-upload" />
-                                    </div>
-                                  
+                                    </div>   
                             </div>
                         </div>
-                        <!-- mechanic form -->
-                    
 
+                        <!-- mechanic form -->
                         <div *ngIf="ngForm.value.usertype=='Mechanic'">
                             <div class="form-container" style="padding: 10px 80px 10px 80px;" >
                                 <mat-form-field>
@@ -95,8 +89,6 @@
                                     <input type="file" id="input-file-now" (change)="NICSelect($event)" class="file-upload" />
                                 </div>
                             </div>
-                            <div></div>
-
                         </div> 
                     
                         <!-- service center form -->
@@ -112,7 +104,7 @@
                                     <mat-error >{{error}}</mat-error>
                                 </mat-form-field> 
                                 <mat-form-field>
-                                    <input matInput #input maxlength="10" minlength="7" placeholder="Hotline" required name="hotline" ngModel>
+                                    <input matInput #input maxlength="10" minlength="10" placeholder="Hotline" required name="hotline" ngModel>
                                     <mat-error >{{error}}</mat-error>
                                 </mat-form-field>
                                         
@@ -133,7 +125,6 @@
                                     <mat-select [formControl]="vehicleType" multiple required>
                                         <mat-option *ngFor="let  vehicleType of  vehicleTypeList" [value]=" vehicleType">{{ vehicleType}}</mat-option>
                                     </mat-select>
-                                    <!-- <mat-error *ngif="vehicleType.hasError('required')">Pleease choose vehicle type</mat-error> -->
                                 </mat-form-field>
                             </div>  
                         </div>
@@ -145,18 +136,14 @@
                             
                             <mat-form-field>
                                 <input type="password" matInput placeholder="Confirm Password" name="repassword" ngModel required #repassword>
-                                <mat-error >{{error}}</mat-error>
-                                        <!-- {{ngForm.value.password}} -->  
+                                <mat-error >{{error}}</mat-error> 
                             </mat-form-field>
                             <small *ngIf="(ngForm.value.password!=ngForm.value.repassword)" style="color: red;">Password not match</small>
-                                <!-- <span >{{repassword.untouched}}</span> -->
-                                <small style="color: red;">{{mainerr}}</small>
+                            <small style="color: red;">{{mainerr}}</small>
                         </div>
                        
                         <a (click)="Register(ngForm.value,vehicleType.value)" class="login-btn btn-rounded" mat-raised-button color="warn">Submit</a>
                         <a  class="login-btn btn-rounded" mat-raised-button color="warn" style="margin-left:50px ;">Cancel</a>
-                        <!-- {{ngForm.value |json}} -->
-                        <!-- {{vehicleType.value}} -->
                     </form> 
                 </div>
             </div>

@@ -3,7 +3,6 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 export interface Cookie {
   usertype:string,
-  email: string,
   name:string,
   id:string,
   
@@ -15,7 +14,7 @@ export interface Cookie {
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  userdetail:Cookie={ usertype:"" ,email:"",name:"",id:""};
+  userdetail:Cookie={ usertype:"" ,name:"",id:""};
   usertype="";
 
   constructor( private auth:AuthService,private route:Router) { }

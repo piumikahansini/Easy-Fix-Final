@@ -50,7 +50,7 @@ export class ViewMechcnicsComponent implements OnInit {
       this.allData.forEach(element => {
         // console.log(element)
         var temp:User;
-        if(element.payload.doc.data().usertype == "Mechanic" && element.payload.doc.data().blockstatus==false){
+        if((element.payload.doc.data().usertype == "Mechanic" || element.payload.doc.data().usertype == "mechanic")&& element.payload.doc.data().blockstatus==false){
           console.log(temp);
           temp=element.payload.doc.data();
           temp.id=element.payload.doc.id;
